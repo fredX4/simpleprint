@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!—- For IE -— >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!— For Resposive Device —>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reset password | simpleprint</title>
+
+    <!— Favicon —>
+    <link rel="icon" type="image/png" sizes="56x53" href="images/fav-icon/icon.png">
+
+    <!— Main style sheet —>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!— responsive style sheet —>
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <style>
+
+        body {
+            background: url("images/home/lbanner.jpg");
+        }
+
+        .login_div {
+            margin-top: 12%;
+            margin-left: 36%;
+            background: #FFFFFF;
+            height: auto;
+            width: 400px;
+            padding-bottom: 25px;
+            border-bottom: 5px solid #C9182B;
+            font-size: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+        }
+
+        .login_div > img {
+            margin-left: 130px;
+            margin-top: 55px;
+
+        }
+
+        h1 {
+            text-transform: none !important;
+            font-size: 35px;
+        }
+
+        p {
+            text-transform: none !important;
+            text-align: left;
+            font-size: 15px;
+            font-weight: bold;
+            color: #0f0f0f;
+            padding-left: 30px;
+            padding-right: 20px;
+
+        }
+
+        .lbutton {
+            display: inline-block;
+            padding: 0px 125px;
+            height: 40px;
+            background: #C9182B;
+            font-size: 15px;
+            color: #FFFFFF;
+        }
+
+        .text_input {
+            font-size: 15px !important;
+            margin-left: 10px;
+        }
+
+        input[type=password] {
+            width: 86%;
+        }
+
+        .login_img {
+            float: left;
+            padding-left: 20px;
+            padding-top: 20px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<div class="login_div">
+
+    <div class="login_img">
+        <a href="/"><img src="./images/logo/logo_black.png" width="130" height="40"></a>
+    </div>
+    <br>
+
+    <img src="./images/home/reset.png" width="150" height="150"><br>
+    <h1>Reset Password</h1><br>
+
+    <form id="resetfrm" method="post">
+
+        <input type="password" class="text_input" name = "password"id="pwd" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}" placeholder="Enter New Password" title="Must contain 5 to 15 characters, and no spaces" required>
+        <input type="password" class="text_input" id="c_pwd" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}" placeholder="Retype New Password" title="Must contain 5 to 15 characters, and no spaces" required>
+        <!--<input type="password" class="text_input" placeholder="Enter New Password" id="pwd" required>-->
+        <!--<input type="password" class="text_input" placeholder="Retype New Password" id="c_pwd" required>-->
+        <br><br>
+        <button class="lbutton">Reset Password</button>
+
+    </form>
+
+</div>
+
+<script>
+
+    var form = document.getElementById('resetfrm');
+    if (form.attachEvent) {
+        form.attachEvent("submit", validate);
+    } else {
+        form.addEventListener("submit", validate);
+    }
+
+    function  validate(e) {
+        if (e.preventDefault) e.preventDefault();
+        var pwd = document.getElementById('pwd').value;
+        var c_pwd = document.getElementById('c_pwd').value;
+
+        if (pwd != c_pwd){
+            alert("Error: Passwords do not match!");
+            document.getElementById('c_pwd').focus();
+            return false;
+        }
+
+        var data = {
+            password: document.getElementsByName('password')[0].value
+        }
+
+        var myInit = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        var myRequest = new Request('/validate_reset_otp', myInit);
+
+        fetch(myRequest)
+            .then((data) => {
+            return data.json()
+        })
+    .then(function (data) {
+            if(data.error == 0) {
+                alert('Password Changed Successfully');
+                window.location = '/login';
+                return false;
+            }
+        })
+    }
+    </script>
+
+</body>
+</html>

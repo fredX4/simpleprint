@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('psp_head') %>
+
+<body>
+<script>
+    var current_view = 'printView';
+    var current_sub_view = 'pendingView';
+    var current_design_view = 'sizeView';
+    var current_service_view = 'myserviceView';
+    var current_settings_view = 'profileView';
+
+</script>
+
+<%- include('psp_sidebar') %>
+
+<div class="main_space">
+
+    <div class="print_works show" id="printView">
+
+        <span class="heading">Print Works</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="tab_button active_sub_tab" onclick="switchTab('pendingView',this)">Pending</button>
+            <button class="tab_button" onclick="switchTab('completedView',this)">Completed</button>
+            <button class="tab_button" onclick="switchTab('cancelledView',this)">Cancelled</button>
+        </div>
+
+        <div id="pendingView" class="viewClass show">
+
+            <% if(typeof jobs != 'undefined') {%>
+            <% jobs.forEach(function (job) {
+
+
+                if(job.status != 1)
+                    {
+
+                        return;
+                    }
+
+                %>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red"> <%= job.print_request_id %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> <%= new Date(job.time).toDateString() %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.name %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Phone:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.phone %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.amount %></P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_<%= job.print_request_id %>' onclick="showDetails('<%= job.print_request_id %>')">View Details</button>
+                    <button class="view_button hidden" id='hide_<%= job.print_request_id %>' onclick="hideDetails('<%= job.print_request_id %>')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_<%= job.print_request_id %>'>
+                    <p>Print Job Details:</p>
+                    <%print_details = JSON.parse(job.print_details) %>
+                    <table class="details_table" border="1">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id ="">
+
+                            <% print_details.forEach(function (print) { %>
+                        <td data-service_id=<%= print.service_id %>></td>
+                        <td data-size_id=<%= print.service_id %>></td>
+                            <td><a download href="/uploads/<%= print.file_url %>"><%= print.file_url %></a></td>
+                        <td><%= print.copies %></td>
+<% }) %>
+                        </tbody>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold"><%= job.payment_id %></span>
+                    <button id="mark_<%=job.print_request_id %>" class="view_button" style="float: right"
+                            onclick="completejob(<%=job.print_request_id %>)">Mark as Completed
+                    </button>
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold"><%= job.payment_type %></span>
+
+
+                </div>
+
+
+            </div>
+<% }) } %>
+
+        </div>
+
+        <div id="completedView" class="viewClass hidden">
+         <% if(typeof jobs != 'undefined') {%>
+            <% jobs.forEach(function (job) {
+
+                if(job.status != 2)
+                    {
+
+                        return;
+                    }
+
+                %>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red"> <%= job.print_request_id %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> <%= new Date(job.time).toDateString() %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.name %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Phone:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.phone %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.amount %></P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_<%= job.print_request_id %>' onclick="showDetails('<%= job.print_request_id %>')">View Details</button>
+                    <button class="view_button hidden" id='hide_<%= job.print_request_id %>' onclick="hideDetails('<%= job.print_request_id %>')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_<%= job.print_request_id %>'>
+                    <p>Print Job Details:</p>
+                    <%print_details = JSON.parse(job.print_details) %>
+                    <table class="details_table" border="1">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id ="">
+
+                            <% print_details.forEach(function (print) { %>
+                        <td data-service_id=<%= print.service_id %>></td>
+                        <td data-size_id=<%= print.service_id %>></td>
+                            <td><a download href="/uploads/<%= print.file_url %>"><%= print.file_url %></a></td>
+                        <td><%= print.copies %></td>
+<% }) %>
+                        </tbody>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold"><%= job.payment_id %></span>
+
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold"><%= job.payment_type %></span>
+
+
+                </div>
+
+
+            </div>
+<% }) } %>
+
+        </div>
+
+<!--     Cancelled  -->
+
+
+        <div id="cancelledView" class="viewClass hidden">
+         <% if(typeof jobs != 'undefined') {%>
+            <% jobs.forEach(function (job) {
+
+                if(job.status != 3)
+                    {
+
+                        return;
+                    }
+
+                %>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red"> <%= job.print_request_id %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> <%= new Date(job.time).toDateString() %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.name %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Phone:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.phone %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.amount %></P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_<%= job.print_request_id %>' onclick="showDetails('<%= job.print_request_id %>')">View Details</button>
+                    <button class="view_button hidden" id='hide_<%= job.print_request_id %>' onclick="hideDetails('<%= job.print_request_id %>')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_<%= job.print_request_id %>'>
+                    <p>Print Job Details:</p>
+                    <%print_details = JSON.parse(job.print_details) %>
+                    <table class="details_table" border="1">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id ="">
+
+                            <% print_details.forEach(function (print) { %>
+                        <td data-service_id=<%= print.service_id %>></td>
+                        <td data-size_id=<%= print.service_id %>></td>
+                            <td><a download href="/uploads/<%= print.file_url %>"><%= print.file_url %></a></td>
+                        <td><%= print.copies %></td>
+<% }) %>
+                        </tbody>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold"><%= job.payment_id %></span>
+
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold"><%= job.payment_type %></span>
+
+
+                </div>
+
+
+            </div>
+<% }) } %>
+
+        </div>
+
+
+<!--     Cancelled  -->
+        </div>
+
+
+        <div class="print_works hidden" id="serviceView">
+
+        <span class="heading">My Services</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="service_button active_service_tab" onclick="switchserviceTab('myserviceView',this)">My
+                Services
+            </button>
+            <button class="service_button" onclick="switchserviceTab('addserviceView',this)">Add New Service</button>
+            <button class="service_button" onclick="switchserviceTab('updateView',this)">Update Service</button>
+        </div>
+
+        <div id="myserviceView" class="viewClass show">
+            <div class="card_space">
+                <div class="entry">
+                    <p>List of Available Services:</p>
+                    <div class="service_table">
+                        <table border="1">
+                            <tr>
+
+                                <th>Type of Service</th>
+                                <th>Document Size</th>
+                                <th>Rate</th>
+                            </tr>
+                            <% services.forEach(function(res) { %>
+                            <tr>
+                                <td>
+                                    <%= res.service_name %>
+                                </td>
+                                <td>
+                                    <%= res.document_size %>
+
+                                </td>
+                                <td>
+                                    <%= res.rate %>
+
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="addserviceView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #16cb44">Add a Service:</p>
+                    <div class="addservice">
+                        <!--<form id="addservicefrm" method="post" onsubmit="return addservice()">-->
+                            <table>
+                                <tr>
+                                    <th style="text-align: left">Name of Service</th>
+                                    <td>
+                                        <select id="service_name" name="service_name">
+                                            <option value="0">Select a Service</option>
+                                            <% available_services.forEach(function(res){ %>
+                                            <option value="<%= res.service_name %>" ><%= res.service_name %></option>
+                                            <% }) %>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Document Size</th>
+                                    <td>
+                                        <select id="document_size" name="document_size">
+                                            <option value="0">Select a Size</option>
+                                            <% available_services.forEach(function(res){ %>
+                                            <option value="<%= res.document_size %>"><%= res.document_size %></option>
+                                            <% }) %>
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Rate</th>
+                                    <td width="100%">
+                                        <input type="text" style="padding: 2px 7px;" id="rate"
+                                               pattern = "[0-9]{1,5}" placeholder="Enter Rate" title="Enter a valid rate, upto 10,000" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="view_button" style="font-size: 15px;width: 100%;" onclick="addservice()">Add
+                                            Service
+                                        </button>
+                                </tr>
+
+                            </table>
+                        <!--</form>-->
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="updateView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #16cb44">Update Service:</p>
+                    <div class="addservice">
+                        <!--<form id="updateservicefrm" method="post" onsubmit="return updateservice()">-->
+                            <table>
+                                <tr>
+                                    <th style="text-align: left">Name of Service</th>
+                                    <td>
+                                        <select id="uservice">
+                                            <option value="0">Select a Service</option>
+                                            <% services.forEach(function(res) { %>
+                                        <option><%= res.service_name %></option>
+                                <% }) %>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Document Size</th>
+                                    <td>
+                                        <select id="udocument_size">
+                                            <option value="0">Select a Size</option>
+                                            <% services.forEach(function(res) { %>
+                                            <option><%= res.document_size %></option>
+                                            <% }) %>
+
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Rate</th>
+                                    <td width="100%">
+                                        <input type="text" style="padding: 2px 7px;" id="urate"
+                                               pattern = "[0-9]{1,5}" placeholder="Enter Rate" title="Enter a valid rate, upto 10,000" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;" onclick="updateservice()">
+                                        Update
+                                        Service
+                                    </button>
+                            </tr>
+                                <!--<tr>-->
+                                    <!--<td></td>-->
+                                    <!--<td>-->
+                                        <!--<button class="view_button" style="font-size: 15px;width: 100%;" onclick="removeservice()">-->
+                                            <!--Remove Service-->
+                                        <!--</button>-->
+                                <!--</tr>-->
+
+                            </table>
+                        <!--</form>-->
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="print_works hidden" id="designerView">
+
+        <span class="heading">simpleDesigner</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="design_button active_design_tab" onclick="switchdesignTab('sizeView',this)">Sizes</button>
+            <button class="design_button" onclick="switchdesignTab('templateView',this)">Templates</button>
+            <button class="design_button" onclick="switchdesignTab('designView',this)">My Designs</button>
+        </div>
+
+        <div id="sizeView" class="viewClass show">
+
+            <div class="box">
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="150px" height="100px">
+                        <br> Banner
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="100px" height="150px">
+                        <br> A4
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="200px" height="110px">
+                        <br> A3
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="70px" height="110px">
+                        <br> A5
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="90px" height="150px">
+                        <br> Letter
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="130px" height="150px">
+                        <br> B0
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="100px" height="140px">
+                        <br> B1
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="180px" height="100px">
+                        <br> B2
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="templateView" class="viewClass hidden">
+
+            <div class="box">
+                <% if (typeof templates != 'undefined') { %>
+                <% templates.forEach(function (template) { %>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf/?id=<%= (template.template_id) ? template.template_id : '' %>"
+                       target="_blank">
+                        <img src="<%= (template.template_thumbnail) ? template.template_thumbnail : '' %>" width="150px"
+                             height="100px">
+                        <br> <%= (template.template_name) ? template.template_name : 'Template' %>
+                    </a>
+                </div>
+
+                <% }) %>
+                <% } %>
+            </div>
+
+        </div>
+
+        <div id="designView" class="viewClass hidden">
+
+            <div class="box">
+                <% if (typeof templates != 'undefined') { %>
+                <% templates.forEach(function (template) { %>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf/?id=<%= (template.template_id) ? template.template_id : '' %>"
+                       target="_blank">
+                        <img src="<%= (template.template_thumbnail) ? template.template_thumbnail : '' %>" width="150px"
+                             height="100px">
+                        <br> <%= (template.template_name) ? template.template_name : 'Template' %>
+                    </a>
+                </div>
+
+                <% }) %>
+                <% } %>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="print_works hidden" id="feedbackView">
+
+        <span class="heading">Customer Feedback</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="viewClass">
+            <% feedback.forEach(function (feed) { %>
+            <div class="card_space">
+                <div class="entry">
+                    <P style="font-weight: bold; color: red; font-size: 35px"> <%= feed.rating %></P>
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">of 5</p>
+
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Work ID:</p>
+                    <P style="font-weight: bolder; color: red"><%= feed.print_request_id %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer ID:</p>
+                    <P style="font-weight: bolder; color: red"><%= feed.psp_id %></P>
+                </div>
+                <div class="entry" style="display: block">
+                    <p>Feedback:</p>
+                    <P style="color: #000"><%= feed.review %></P>
+                </div>
+            </div>
+            <% }) %>
+
+        </div>
+
+
+    </div>
+
+    <div class="print_works hidden" id="settingsView">
+
+        <span class="heading">Settings</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="settings_button active_settings_tab" onclick="switchsettingsTab('profileView',this)">User
+                Profile
+            </button>
+            <button class="settings_button" onclick="switchsettingsTab('updateprofileView',this)">Update Profile
+            </button>
+            <button class="settings_button" onclick="switchsettingsTab('changepwdView',this)">Change Password</button>
+        </div>
+
+        <div id="profileView" class="viewClass show">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">User Profile:</p>
+                    <div class="profile" style="margin-top: 20px;margin-left: 40px;">
+                        <img id="profile_pic" src="uploads/<%= (typeof user_img !="undefined" && user_img != 0 ) ? user_img : 'avatar.png' %>" style="display:  inline-block;border-radius: 50%;"
+                             width="150" height="150" class="avatar_pic">
+                        <span><%= typeof name != 'undefined' ? name : '' %></span>
+                        <p style="display: inline-block">&nbsp;<%= typeof user_address != 'undefined' ? user_address : '' %></p><br><br>
+                        <input type="file" id="profile" accept="image/*">
+                        <button style="margin-left: -5px;margin-top: 10px;" class="view_button" onclick="return changeProfile()">Change Profile Picture
+                        </button>
+                    </div>
+                    <p style="margin-top: 15px;font-weight: bold;color: #0cb2cb;">Contact Details:</p>
+                    <table class="contact_table">
+                        <tr>
+                            <th style="text-align: left">E-mail</th>
+                            <td><label><%= typeof email != 'undefined' ? email : '' %></label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">User Type</th>
+                            <td><label>Print Service Provider</label></td>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: left">Phone</th>
+                            <td><label><%= typeof phone != 'undefined' ? phone : '' %></label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Location</th>
+                            <td>
+                                <span id="location_label_static">9.02853,1.56827</span>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <p style="margin-top: 15px;font-weight: bold;color: #0cb2cb;">Bank Details:</p>
+                    <table class="contact_table">
+
+                        <tr>
+                            <th style="text-align: left">Bank Name</th>
+                            <td><label><%= bank_name != 'undefined' ? bank_name : '' %></label></td>
+                        </tr>
+                      
+                        <tr>
+                            <th style="text-align: left">IFSC Code</th>
+                            <td><label><%= typeof ifsc_code != 'undefined' ? ifsc_code : '' %></label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Account No</th>
+                            <td><label><%= typeof acc_no != 'undefined' ? acc_no : '' %></label></td>
+                        </tr>
+
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="updateprofileView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">Update Profile:</p>
+                    <!--<form name="updateprofilefrm" method="post" onsubmit="return updateprofile()"-->
+                          <!--action="">-->
+                        <table class="contact_table">
+                            <tr>
+                                <th>Name</th>
+                                <td width="150%">
+                                    <input type="text" pattern="[a-zA-Z\s]{3,25}" style="padding: 2px 7px;" name="name"
+                                           title="Must contain 3 to 25 characters, and no numbers" value="<%= typeof name != 'undefined' ? name : '' %>"
+                                           required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>
+                                    <input type="text" style="padding: 2px 7px;" name="city" id = "city" value="<%= typeof user_address != 'undefined' ? user_address : '' %>"  required autocomplete=off>
+                                    <input type="hidden" name="shop_lon" value="<%= typeof lng != 'undefined' ?  lng : '' %>">
+                                    <input type="hidden" name="shop_lat" value="<%= typeof lat != 'undefined' ?  lat : '' %>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>
+                                    <input type="text" name="phone" pattern="[\d]{10}" style="padding: 2px 7px;"
+                                           value="<%= typeof phone != 'undefined' ? phone : '' %>" title="Enter a valid Phone Number" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Location</th>
+                                <td>
+                                    <label for="" id="location_label"><%= typeof lat != 'undefined' ? lat + ',' + lng : '' %></label><a href="#" onclick="SetLocation()">Select Location</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;" onclick = "updateprofile()">Update Profile
+                                    </button>
+                            </tr>
+                        </table>
+                    <!--</form>-->
+                    <p style="font-weight: bold; color: #0cb2cb">Update Bank Details:</p>
+                    <!--<form id="updatebankfrm" method="post" onsubmit="return updatebankdetails()"-->
+                          <!--action="">-->
+                        <table class="contact_table">
+                            <tr>
+                                <th width="25%">Bank Name</th>
+                                <td width="70%">
+                                    <select id="bank-select" name="bank_name" required="" class="input" pattern="[\w]+">
+                                        <option selected="selected" value="<%= bank_name != 'undefined' ? bank_name : 0 %>"><%= bank_name != 'undefined' ? bank_name : 'Select your Bank' %></option>
+                                        <option value="Allahabad Bank">Allahabad Bank</option>
+                                        <option value="Andhra Bank">Andhra Bank</option>
+                                        <option value="Axis Bank">Axis Bank</option>
+                                        <option value="Bank of Bahrein and Kuwait">Bank of Bahrein and Kuwait</option>
+                                        <option value="Bank of Baroda - Corporate Banking">Bank of Baroda - Corporate Banking</option>
+                                        <option value="Bank of Baroda - Retail Banking">Bank of Baroda - Retail Banking</option>
+                                        <option value="Bank of India">Bank of India</option>
+                                        <option value="Bank of Maharashtra">Bank of Maharashtra</option>
+                                        <option value="Canara Bank">Canara Bank</option>
+                                        <option value="Catholic Syrian Bank">Catholic Syrian Bank</option>
+                                        <option value="Central Bank of India">Central Bank of India</option>
+                                        <option value="City Union Bank">City Union Bank</option>
+                                        <option value="Corporation Bank">Corporation Bank</option>
+                                        <option value="Cosmos Co-operative Bank">Cosmos Co-operative Bank</option>
+                                        <option value="DCB Bank">DCB Bank</option>
+                                        <option value="Dena Bank">Dena Bank</option>
+                                        <option value="Deutsche Bank">Deutsche Bank</option>
+                                        <option value="DBSS">Development Bank of Singapore</option>
+                                        <option value="Development Bank of Singapore">Dhanlaxmi Bank</option>
+                                        <option value="Federal Bank">Federal Bank</option>
+                                        <option value="HDFC Bank">HDFC Bank</option>
+                                        <option value="ICICI Bank">ICICI Bank</option>
+                                        <option value="IDBI">IDBI</option>
+                                        <option value="IDFC Bank">IDFC Bank</option>
+                                        <option value="Indian Bank">Indian Bank</option>
+                                        <option value="Indian Overseas Bank">Indian Overseas Bank</option>
+                                        <option value="Indusind Bank">Indusind Bank</option>
+                                        <option value="Jammu and Kashmir Bank">Jammu and Kashmir Bank</option>
+                                        <option value="Janata Sahakari Bank (Pune)">Janata Sahakari Bank (Pune)</option>
+                                        <option value="Karnataka Bank">Karnataka Bank</option>
+                                        <option value="Karur Vysya Bank">Karur Vysya Bank</option>
+                                        <option value="Kotak Mahindra Bank">Kotak Mahindra Bank</option>
+                                        <option value="Lakshmi Vilas Bank - Corporate Banking">Lakshmi Vilas Bank - Corporate Banking</option>
+                                        <option value="Lakshmi Vilas Bank - Retail Banking">Lakshmi Vilas Bank - Retail Banking</option>
+                                        <option value="NKGSB Co-operative Bank">NKGSB Co-operative Bank</option>
+                                        <option value="Oriental Bank of Commerce">Oriental Bank of Commerce</option>
+                                        <option value="Punjab &amp; Maharashtra Co-operative Bank">Punjab &amp; Maharashtra Co-operative Bank</option>
+                                        <option value="Punjab Sind Bank">Punjab Sind Bank</option>
+                                        <option value="Punjab National Bank - Corporate Banking">Punjab National Bank - Corporate Banking</option>
+                                        <option value="Punjab National Bank - Retail Banking">Punjab National Bank - Retail Banking</option>
+                                        <option value="RBL Bank">RBL Bank</option>
+                                        <option value="Saraswat Co-operative Bank">Saraswat Co-operative Bank</option>
+                                        <option value="Shamrao Vithal Co-operative Bank">Shamrao Vithal Co-operative Bank</option>
+                                        <option value="South Indian Bank">South Indian Bank</option>
+                                        <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                                        <option value="State Bank of Bikaner and Jaipur">State Bank of Bikaner and Jaipur</option>
+                                        <option value="State Bank of Hyderabad">State Bank of Hyderabad</option>
+                                        <option value="State Bank of India">State Bank of India</option>
+                                        <option value="State Bank of Mysore">State Bank of Mysore</option>
+                                        <option value="State Bank of Patiala">State Bank of Patiala</option>
+                                        <option value="State Bank of Travancore">State Bank of Travancore</option>
+                                        <option value="Syndicate Bank">Syndicate Bank</option>
+                                        <option value="Tamilnadu Mercantile Bank">Tamilnadu Mercantile Bank</option>
+                                        <option value="Tamilnadu State Apex Co-operative Bank">Tamilnadu State Apex Co-operative Bank</option>
+                                        <option value="UCO Bank">UCO Bank</option>
+                                        <option value="Union Bank of India">Union Bank of India</option>
+                                        <option value="United Bank of India">United Bank of India</option>
+                                        <option value="Vijaya Bank">Vijaya Bank</option>
+                                        <option value="Yes Bank">Yes Bank</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>IFSC Code</th>
+                                <td>
+                                    <input type="text"
+                                           style="padding: 2px 7px;" name="ifsc_code" value="<%= typeof ifsc_code != 'undefined' ? ifsc_code : '' %>" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Account No</th>
+                                <td>
+                                    <input type="text" pattern="[0-9]{11,16}"
+                                           title="Enter a valid Account No, must be between 11 - 16 digits"
+                                           style="padding: 2px 7px;" name="acc_no" value="<%= typeof acc_no != 'undefined' ? acc_no : '' %>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;" onclick="updatebankdetails()">Update Bank
+                                        Details
+                                    </button>
+                            </tr>
+                        </table>
+                    <!--</form>-->
+                </div>
+            </div>
+            <script>
+                function updateprofile()
+                {
+                    var name = document.getElementsByName('name')[0].value
+                    var city = document.getElementById('city').value
+                    var phone = document.getElementsByName('phone')[0].value
+
+                    if(name == ''){
+                        alert('Error: Enter a valid Name!')
+                        document.getElementsByName('name')[0].focus()
+                    }
+                    else if(name.length < 3 || name.length > 25){
+                        alert('Name should be between 3 to 25 characters!')
+                        document.getElementsByName('name')[0].focus()
+                    }
+                    else if(!isNaN(name)){
+                        alert('Error: Name cannot contain numbers!')
+                        document.getElementsByName('name')[0].focus()
+                    }
+                    else if(city == ''){
+                        alert('Error: Enter a valid City!')
+                        document.getElementById('city').focus()
+                    }
+                    else if(phone == ''){
+                        alert('Error: Enter a valid Phone!')
+                        document.getElementsByName('phone')[0].focus()
+                    }
+
+                    else if(isNaN(phone)){
+                        alert('Error: Phone cannot contain characters!')
+                        document.getElementsByName('phone')[0].focus()
+                    }
+                    else if(phone.length != 10 ){
+                        alert('Phone should contain 10 numbers!')
+                        document.getElementsByName('phone')[0].focus()
+                    }
+                    else
+                    {
+                        qwest.post('/update_profile', {
+                            name: document.getElementsByName('name')[0].value,
+                            city: document.getElementById('city').value,
+                            phone: document.getElementsByName('phone')[0].value,
+                            lat: document.getElementsByName('shop_lat')[0].value,
+                            lng: document.getElementsByName('shop_lon')[0].value
+                        })
+                            .then(function (xhr, json) {
+
+                                if (json.error == 0 || json.success == 1) {
+                                    alert('Profile Updated Successfully!')
+                                    window.location = '/dashboard'
+                                }
+                                else {
+                                    alert("Already Existing Phone Number!");
+                                }
+                            })
+
+                    }
+
+                }
+
+                function updatebankdetails() {
+                    var bank_name = document.getElementsByName('bank_name')[0].value
+                    var ifsc_code = document.getElementsByName('ifsc_code')[0].value
+                    var acc_no = document.getElementsByName('acc_no')[0].value
+                    if (bank_name == 0){
+                        alert('Error: Select a Bank Name!')
+                        document.getElementsByName('bank_name')[0].focus()
+                    }
+                    else if(ifsc_code== ''){
+                        alert('Error: Enter a valid IFSC Code!')
+                        document.getElementsByName('ifsc_code')[0].focus()
+                    }
+                    else if(ifsc_code.length != 11 ){
+                        alert('IFSC Code should be 11 characters!')
+                        document.getElementsByName('ifsc_code')[0].focus()
+                    }
+                    else if(acc_no== ''){
+                        alert('Error: Enter a valid Account Number!')
+                        document.getElementsByName('acc_no')[0].focus()
+                    }
+                    else if(acc_no.length < 11 || acc_no.length > 16){
+                        alert('Account Number should be atleast 11 and upto 16 characters!')
+                        document.getElementsByName('acc_no')[0].focus()
+                    }
+                    else if(isNaN(acc_no)){
+                        alert('Error: Account Number cannot contain characters!')
+                        document.getElementsByName('acc_no')[0].focus()
+                    }
+                else
+                    {
+                        qwest.post('/update_bank_details', {
+                            bank_name: document.getElementsByName('bank_name')[0].value,
+                            ifsc_code: document.getElementsByName('ifsc_code')[0].value,
+                            acc_no: document.getElementsByName('acc_no')[0].value
+                        })
+                            .then(function (xhr, json) {
+
+                                if (json.error == 0 || json.success == 1) {
+                                    alert('Profile Updated Successfully!')
+                                    window.location = '/dashboard'
+                                }
+                                else {
+                                    alert("Already Existing Phone Number!");
+                                }
+                            })
+
+                    }
+
+                }
+
+
+
+
+            </script>
+
+        </div>
+
+        <div id="changepwdView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">Update Profile:</p>
+                    <!--<form id="changepwdfrm" method="post" onsubmit="return changepassword()">-->
+                        <table class="contact_table">
+                            <tr>
+                                <th>Current Password</th>
+                                <td width="100%">
+                                    <input type="password" id="current_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="Current Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>New Password</th>
+                                <td>
+                                    <input type="password" id="new_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="New Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Retype Passsword</th>
+                                <td>
+                                    <input type="password" id="retype_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="Retype New Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;" onclick="changepassword()" >Change Password</button>
+                            </tr>
+                        </table>
+                    <!--</form>-->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    var current_tab = document.querySelector('.inner_list');
+    var current_sub_tab = document.querySelector('.tab_button');
+    var current_design_tab = document.querySelector('.design_button');
+    var current_service_tab = document.querySelector('.service_button');
+    var current_settings_tab = document.querySelector('.settings_button');
+
+    function switchTo(view, elm) {
+        current_tab.classList.remove('active_icon');
+        document.getElementById(current_view).className = document.getElementById(current_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_view).className.replace("hidden", "show");
+        current_view = view;
+        current_tab = elm;
+        elm.classList.add('active_icon');
+    }
+
+    function switchTab(view, elm) {
+        current_sub_tab.classList.remove('active_sub_tab');
+        document.getElementById(current_sub_view).className = document.getElementById(current_sub_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_sub_view).className.replace("hidden", "show");
+        current_sub_view = view;
+        current_sub_tab = elm;
+        elm.classList.add('active_sub_tab');
+    }
+
+    function switchdesignTab(view, elm) {
+        current_design_tab.classList.remove('active_design_tab');
+        document.getElementById(current_design_view).className = document.getElementById(current_design_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_design_view).className.replace("hidden", "show");
+        current_design_view = view;
+        current_design_tab = elm;
+        elm.classList.add('active_design_tab');
+    }
+
+    function switchserviceTab(view, elm) {
+        current_service_tab.classList.remove('active_service_tab');
+        document.getElementById(current_service_view).className = document.getElementById(current_service_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_service_view).className.replace("hidden", "show");
+        current_service_view = view;
+        current_service_tab = elm;
+        elm.classList.add('active_service_tab');
+    }
+
+    function switchsettingsTab(view, elm) {
+        current_settings_tab.classList.remove('active_settings_tab');
+        document.getElementById(current_settings_view).className = document.getElementById(current_settings_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_settings_view).className.replace("hidden", "show");
+        current_settings_view = view;
+        current_settings_tab = elm;
+        elm.classList.add('active_settings_tab');
+    }
+
+    function showDetails(id) {
+        detail_id = 'detail_' + id;
+        view_id = 'view_' + id;
+        hide_id = 'hide_' + id;
+        document.getElementById(detail_id).className = document.getElementById(detail_id).className.replace("hidden", "show");
+        document.getElementById(hide_id).className = document.getElementById(hide_id).className.replace("hidden", "show");
+        document.getElementById(view_id).className = document.getElementById(view_id).className.replace("show", "hidden");
+    }
+
+    function hideDetails(id) {
+        detail_id = 'detail_' + id;
+        view_id = 'view_' + id;
+        hide_id = 'hide_' + id;
+        document.getElementById(detail_id).className = document.getElementById(detail_id).className.replace("show", "hidden");
+        document.getElementById(hide_id).className = document.getElementById(hide_id).className.replace("show", "hidden");
+        document.getElementById(view_id).className = document.getElementById(view_id).className.replace("hidden", "show");
+    }
+
+    function completejob(id){
+
+        var a = confirm('Mark the selected work as completed?')
+        if (a == true){
+
+            //Script for Completing Print Job and Sending Confirmation Message
+
+            qwest.post('/psp/complete_job', {id:id})
+            .then(function (xhr,json) {
+
+                if(json.error == 1) {
+
+                    alert('Unable to confirm');
+                return;
+                }
+
+                alert('confirmed');
+                document.location = '/dashboard'
+
+            })
+
+
+        }
+
+    }
+
+    function addservice(){
+
+        var service_name = document.getElementById('service_name').value;
+        var document_size = document.getElementById('document_size').value;
+        var rate = document.getElementById('rate').value;
+
+        if (service_name == 0){
+            alert('Select a Service!')
+            document.getElementById('service').focus()
+        }
+        else if (document_size == 0){
+            alert('Select a Document Size!')
+            document.getElementById('document_size').focus()
+        }
+        else if(rate == ''){
+            alert('Error: Enter a valid Rate!')
+            document.getElementById('rate').focus()
+        }
+
+        else if(isNaN(rate)){
+            alert('Error: Rate cannot contain characters!')
+            document.getElementById('rate').focus()
+        }
+
+        else{
+
+
+            qwest.post('/add_psp_service', {
+                service_name: service_name,
+                document_size: document_size,
+                rate: rate
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 0) {
+                        alert('Service Added Successfully!')
+                        window.location = '/dashboard'
+                    }
+                    else {
+                        alert("Invalid Service!");
+                        document.getElementById('document_size').value = 0;
+                    }
+
+                })
+
+
+
+        }
+
+    }
+
+    function updateservice(){
+
+        var service_name = document.getElementById('uservice').value;
+        var document_size = document.getElementById('udocument_size').value;
+        var rate = document.getElementById('urate').value;
+
+        if (service_name == 0){
+            alert('Select a Service!')
+            document.getElementById('uservice').focus()
+            return false
+        }
+        else if (document_size == 0){
+            alert('Select a Document Size!')
+            document.getElementById('udocument_size').focus()
+            return false
+        }
+        else if(rate == ''){
+            alert('Error: Enter a valid Rate!')
+            document.getElementById('rate').focus()
+        }
+
+        else if(isNaN(rate)){
+            alert('Error: Rate cannot contain characters!')
+            document.getElementById('rate').focus()
+        }
+        else{
+
+            qwest.post('/update_psp_service', {
+                service_name: service_name,
+                document_size: document_size,
+                rate: rate
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 0) {
+                        alert('Service Updated Successfully!')
+                        window.location = '/dashboard'
+                    }
+                    else {
+                        alert("Invalid Service!");
+                    }
+
+                })
+
+
+
+        }
+
+
+
+
+
+    }
+
+    // function removeservice(){
+    //
+    //     var service = document.getElementById('uservice').value;
+    //     var document_size = document.getElementById('udocument_size').value;
+    //
+    //     if (service == 0){
+    //         alert('Select a Service!')
+    //         document.getElementById('uservice').focus()
+    //         return false
+    //     }
+    //     if (document_size == 0){
+    //         alert('Select a Document Size!')
+    //         document.getElementById('udocument_size').focus()
+    //         return false
+    //     }
+    //
+    //     var a = confirm('Do you want to remove the selected Service?')
+    //
+    //     if (a == true){
+    //
+    //         //Script for removing existing Service
+    //
+    //         alert('Service Removed Successfully!')
+    //
+    //     }
+    //
+    // }
+
+    function  changeProfile() {
+
+        //File Upload
+        var fileName = document.getElementById('profile').value;
+        if (fileName == "") {
+            alert("Select a File!")
+            document.getElementById('profile').focus()
+            return false
+        }
+        var allowed_extensions = new Array("jpg", "png", "jpeg", "bmp");
+        var file_extension = fileName.split('.').pop().toLowerCase(); // split function will split the filename by dot(.), and pop function will pop the last element from the array which will give you the extension as well. If there will be no extension then it will return the filename.
+
+        for (var i = 0; i <= allowed_extensions.length; i++) {
+            if (allowed_extensions[i] == file_extension) {
+
+                //Enter Script for Updating Profile Picture in Database
+                // document.getElementById('profile_pic').setAttribute("src",fileName)
+                var file = document.getElementById('profile').files[0];
+
+                uploadFile(file, function (err, img_url) {
+
+                    console.log(img_url)
+                    if (err) {
+
+                        alert('Error uploading image!')
+
+                    } else {
+
+                        var pic = document.getElementsByClassName('avatar_pic')
+                            pic[0].src= pic[1].src = 'uploads/' + img_url
+
+                            qwest.post('/update_profile_pic' , {url:img_url})
+                                .then(function (xhr,json) {
+
+                               if( json.error == 0) {
+                                   alert('Profile Picture Changed Successfully')
+                               }
+
+                            })
+
+
+                    }
+                })
+
+
+
+            }
+        }
+
+        // alert("Invalid file format!")
+        // document.getElementById('profile').focus()
+        // return false;
+
+    }
+    function uploadFile(file, cb) {
+
+        var frm = new FormData();
+        frm.append("file", file);
+        qwest.post('user/upload', frm)
+            .then(function (xhr, json) {
+
+
+                if (json.error == 0) {
+
+
+                    if (cb) {
+                        cb(null, json.location)
+                    } else {
+
+                        if (cb) {
+                            cb(null);
+                        }
+                    }
+                }
+
+            });
+
+    }
+
+
+
+
+    function changepassword(){
+        var current_psw = document.getElementById('current_psw').value;
+        var new_psw = document.getElementById('new_psw').value;
+        var retype_psw = document.getElementById('retype_psw').value;
+
+        if (new_psw != retype_psw) {
+            alert("Error: Passwords do not match!");
+            document.getElementById('retype_psw').focus();
+            return false
+        }
+        else {
+
+            qwest.post('/update_password', {
+
+                current_psw: current_psw,
+                new_psw: new_psw
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 1) {
+                        alert('Error: Current Password is Incorrect!')
+                    } else {
+                        alert('Password Changed Successfully');
+                        window.location = '/dashboard'
+                    }
+                })
+
+        }
+
+    }
+
+    function logout(){
+        var a = confirm('Do you want to logout?')
+        if (a == true){
+
+            alert('Logged Out Successfully!')
+            window.location.href='/logout'
+        }
+    }
+
+
+
+    var placeSearch, autocomplete, globalSpace;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */
+            (document.getElementById('city')), {
+                types: ['geocode']
+            });
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+
+
+        // Get the place details from the autocomplete object.
+
+        var place = autocomplete.getPlace();
+        globalSpace = place;
+        document.getElementsByName('shop_lon')[0].value = place.geometry.location.lng();
+        document.getElementsByName('shop_lat')[0].value = place.geometry.location.lat();
+
+        console.log(place)
+        return;
+
+
+
+    }
+    function SetLocation() {
+
+        var url = 'location.html#' + document.getElementsByName('shop_lat')[0].value + ',' +
+            document.getElementsByName('shop_lon')[0].value
+
+        var strWindowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes";
+        var obj = window.open(url, 'location_map', strWindowFeatures)
+
+        console.log('loaded')
+
+    }
+
+    window.addEventListener('message', function (event) {
+
+        if (event.data.type == 'sha') {
+            let loc = event.data.str.split(',')
+            document.getElementsByName('shop_lon')[0].value = loc[1]
+            document.getElementsByName('shop_lat')[0].value = loc[0]
+        }
+    })
+
+
+
+    function setLocations(lat, lng) {
+
+        console.log(lat,lng)
+        document.getElementsByName('shop_lon')[0].value = lng;
+        document.getElementsByName('shop_lat')[0].value =  lat;
+
+    }
+
+
+    var global_print_details = []
+
+
+    function parser(str, obj) {
+        for (key in obj) {
+            str = str.replace(new RegExp('%' + key + '%', 'g'), obj[key]);
+        }
+        return str;
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qwest/4.5.0/qwest.min.js"></script>
+
+<script>
+    
+    (function() { 
+       qwest.get('/jobs_services')
+        .then(function (xhr,json) {
+
+            global_print_details = json
+
+                        var service_td = document.querySelectorAll('[data-service_id]')
+                        for(var i=0, len = service_td.length; i < len; i++) {
+
+                            service_td[i].innerHTML = json[service_td[i].dataset.service_id].service_name
+                            service_td[i].nextElementSibling.innerHTML = json[service_td[i].dataset.service_id].document_size
+                        }
+
+        })
+   })()
+
+    var services = {};
+
+    function fetchServices() {
+
+        fetch('/user/list_services')
+            .then(data => data.json()
+    )
+    .
+        then(json => {
+
+            //                    services = json;
+
+            var services_html = '<option value="none"> Select Service </option>';
+
+        var temp_services = {}
+
+        for (var i = 0; i < json.length; i++) {
+
+            console.log(json[i].service_name)
+
+            if (typeof temp_services[json[i].service_name] != 'undefined') {
+
+
+                continue;
+            }
+
+            temp_services[json[i].service_name] = 1
+            services[json[i].service_name] = []
+
+            for (var j = 0; j < json.length; j++) {
+
+                if (json[i].service_name == json[j].service_name) {
+                    services[json[i].service_name].push(json[j])
+                }
+            }
+
+
+            services_html += "<option value=\"" + json[i].service_name + "\">" + json[i].service_name + "</option>"
+
+
+        }
+
+        document.getElementById('service').innerHTML = services_html
+
+    })
+
+    }
+
+    document.getElementById('service').addEventListener('click', function (e) {
+
+
+        console.log(e.target.value)
+
+        var sizes = services[e.target.value]
+
+        var size_html = '<option> Select Size</option>'
+
+
+        for (var j = 0; j < sizes.length; j++) {
+
+            size_html = "<option value=\"" + sizes[j].service_id + "\">" + sizes[j].document_size + "</option>"
+
+        }
+
+        document.getElementById('document_size').innerHTML = size_html
+
+    })
+
+    fetchServices()
+
+
+    active_services = []
+    
+    </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ7Y8ZCWIYUk-Y9rPHvvqtCiTWt1TKBxY&libraries=places&callback=initAutocomplete" async defer></script>
+
+<script type="text/javascript">window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "350ee67d-45b9-4b70-91dd-78ea4d5d1db5";
+    (function () {
+        d = document;
+        s = d.createElement("script");
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();</script>
+
+</body>
+
+</html>

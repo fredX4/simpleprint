@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | simpleprint</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="56x53" href="images/fav-icon/icon.png">
+
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <style>
+
+        body {
+            background: url("images/home/lbanner.jpg");
+        }
+
+        .login_div {
+            margin-top: 5%;
+            margin-left: 36%;
+            background: #FFFFFF;
+            height: 630px;
+            width: 400px;
+            border-bottom: 5px solid #C9182B;
+            font-size: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+        }
+
+        .login_div > img {
+            margin-left: 130px;
+            margin-top: 55px;
+
+        }
+
+        h1 {
+            text-transform: none !important;
+            font-size: 45px;
+        }
+
+        p {
+            text-transform: none !important;
+            text-align: left;
+            font-size: 15px;
+            font-weight: bold;
+            color: #0f0f0f;
+            padding-left: 30px;
+            padding-right: 20px;
+
+        }
+
+        .lbutton {
+            display: inline-block;
+            padding: 0px 150px;
+            /*width: 100%;*/
+            height: 40px;
+            background: #C9182B;
+            font-size: 15px;
+            color: #FFFFFF;
+        }
+
+        .text_input {
+            font-size: 15px !important;
+            margin-left: 10px;
+        }
+
+        input[type=text] {
+            width: 86% !important;
+        }
+
+        input[type=email] {
+            width: 86% !important;
+        }
+
+        input[type=password] {
+            width: 86% !important;
+        }
+
+        input[type=checkbox] {
+            display: inline-block;
+            float: left;
+            margin-left: 27px;
+        }
+
+        .login_img{
+            float: left;
+            padding-left: 20px;
+            padding-top: 20px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<div class="login_div">
+
+    <div class="login_img"">
+    <a href="/"><img  src="./images/logo/logo_black.png" width="130" height="40"></a>
+    </div><br>
+
+    <img src="./images/home/login.png" width="150" height="150"><br>
+    <h1>User Log In</h1>
+    <p style="text-align: center; font-weight: normal">Sign In to access simpleprint services</p>
+
+<form name="loginfrm" method="post">
+    <p>E-mail</p>
+    <input type="email" class="text_input" placeholder="Enter Email" name="uname" required>
+    <p>Password</p>
+    <input type="password" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}" class="text_input" name="psw" placeholder="Password" title="Must contain 5 to 15 characters, and no spaces" required><br>
+    <!--<input type="password" pattern="{5,15}" class="text_input" placeholder="Enter Password" name="psw" title="Must not exceed 15 characters" required><br>-->
+
+    <div>
+        <input type="checkbox" checked="checked" name="remember">
+        <p style="font-weight: normal">&nbsp;Remember me</p>
+        <span style="display: inline-block;font-size: 13px;float: right; margin-right: 27px">
+    <a href="/forgot_password">Forgot password?</a></span>
+    </div>
+    <br><br>
+        <button class="lbutton">Log In</button>
+    <br>
+</form>
+
+    <div style="margin-top: 12px">
+        <!--<button style="padding: 10px 0px;background: #d19603;float: left;width: 80px;margin-left: 28px;" class="lbutton">Cancel</button>-->
+        <a href="/register" style="float: right;margin-right: 29px;"><button class="lbutton" style="padding: 10px 15px; background: #d15917">User Registration</button></a>
+    </div>
+
+
+</div>
+
+</body>
+</html>

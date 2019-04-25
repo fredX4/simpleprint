@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin | simpleprint</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="56x53" href="images/fav-icon/icon.png">
+
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <style>
+
+        body {
+            overflow: hidden;
+        }
+
+        .sidebar {
+            float: left;
+            display: block;
+            background: #272c32;
+            width: 20%;
+            height: 780px;
+            box-sizing: border-box;
+        }
+
+        .user_details {
+            color: #FFFFFF;
+            font-weight: bold;
+
+        }
+
+        .user_details > img {
+            /*border-radius: 50%;*/
+            /*border: solid 3px #FFFFFF;*/
+            margin-top: 40px;
+            margin-left: 64px;
+            width: 150px;
+            height: 150px;
+        }
+
+        .user_details > span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .inner_list {
+            height: 40px;
+            background: #272c32;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .inner_list > img {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .main_space {
+            position: fixed;
+            margin-left: 20%;
+            width: 80%;
+            height: 100%;
+            background: #4b565c;
+            overflow-y: auto;
+            padding-bottom: 10px;
+        }
+
+        .print_works {
+            display: inline-block;
+            width: 100%;
+            height: auto;
+            background: #4b565c;
+
+        }
+
+        .heading {
+            padding-left: 35px;
+            padding-top: 30px;
+            font-weight: bolder;
+            font-size: 40px;
+            display: inline-block;
+            text-transform: none;
+            color: #FFFFFF;
+        }
+
+        .header_logo {
+            margin-right: 40px;
+            margin-top: 40px;
+            float: right;
+            display: inline-block
+
+        }
+
+        .active_icon {
+            background: #4b565c;
+        }
+
+        .active_design_tab {
+            /*background: #db9630;*/
+            border: 2px solid #db3728;
+        }
+
+        .active_service_tab {
+            /*background: #db9630;*/
+            border: 2px solid #16cb44;
+        }
+
+        .active_settings_tab {
+            /*background: #db9630;*/
+            border: 2px solid #0cb2cb;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .card_space {
+            background: #ffffff;
+            width: 97%;
+            height: auto;
+            margin-bottom: 20px;
+            /*margin-left: 32px;*/
+            /*margin-top: 15px;*/
+            padding-bottom: 18px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .viewClass {
+            /*background: red;*/
+            margin-left: 32px;
+            margin-top: 15px;
+        }
+
+        .tab {
+            display: inline-block;
+            margin-left: 30px;
+            margin-top: -8px;
+        }
+
+        .design_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .design_button:hover {
+            background: #db3728;
+            transition: all 0.2s ease;
+        }
+
+        .service_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .service_button:hover {
+            background: #16cb44;
+            transition: all 0.2s ease;
+        }
+
+        .settings_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .settings_button:hover {
+            background: #0cb2cb;
+            transition: all 0.2s ease;
+        }
+
+        .entry {
+            display: inline-block;
+            font-size: 20px;
+            padding: 0px 15px;
+            margin-top: 18px;
+            /*font-weight: bold;*/
+        }
+
+        .view_button {
+            font-size: 12px;
+            padding: 8px 15px;
+            width: auto;
+            color: #db1340;
+            display: inline-block;
+            border: 2px solid #db1340;
+            background: #FFFFFF;
+            margin-right: 15px;
+            margin-top: 8px;
+        }
+
+        .view_button:hover {
+            background: #db1340;
+            color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        td, th {
+            padding: 4px 64px;
+        }
+
+        .service_table th, .service_table td {
+            padding: 4px 104px;
+        }
+
+        .addservice th, addservice td {
+            width: 25%;
+            padding: 3px 30px;
+        }
+
+        .box {
+            /*background: #00A0D1;*/
+            width: 100%;
+            margin-top: -15px;
+            margin-left: -3px;
+        }
+
+        .card {
+            display: inline-block;
+            width: 150px;
+            height: 200px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            /*background: #2eff5b;*/
+            margin: 10px;
+            color: #fff;
+        }
+
+        .card a:active, a:visited {
+            color: #fff !important;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            color: #db3728 !important;
+            transition: all 0.3s ease;
+        }
+
+        .card img {
+            display: inline-block !important;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border: 1px solid #fff;
+            margin-bottom: 10px;
+            /*align-content: center;*/
+        }
+
+        select {
+            width: 100% !important;
+            height: 35px;
+            margin-bottom: 3px
+
+        }
+
+        .profile span {
+            font-size: 35px;
+            font-weight: bold;
+            color: #0f0f0f;
+            margin-left: 30px;
+        }
+
+        .contact_table th {
+            font-weight: normal;
+        }
+
+        .details_table a {
+            color: #00A0D1 !important;
+        }
+
+        .contact_table a {
+            color: #00A0D1 !important;
+            padding-left: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<script>
+    var current_view = 'serviceView';
+    var current_design_view = 'sizeView';
+    var current_service_view = 'myserviceView';
+    var current_settings_view = 'changepwdView';
+
+</script>
+<div class="sidebar">
+
+    <div class="user_details" style=" text-align: center;">
+        <img src="images/home/admin.png">
+        <br>
+        <span>Administrator</span><br>
+        <span style="font-weight: lighter; font-size: 16px">simpleprint</span>
+    </div>
+    <hr width="90%">
+
+
+    <button class="inner_list active_icon" onclick="switchTo('serviceView',this)">
+        <img src="images/png_new/services.png">Services
+    </button>
+
+    <button class="inner_list" onclick="switchTo('designerView',this)">
+        <img src="images/png_new/designer.png">simpleDesigner
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('settingsView',this)">
+        <img src="images/png_new/settings.png">Settings
+    </button>
+
+
+    <button class="inner_list" onclick="return logout()">
+        <img src="images/png_new/logout.png">Logout
+    </button>
+    <hr width="90%">
+</div>
+
+<div class="main_space">
+
+
+    <div class="print_works show" id="serviceView">
+
+        <span class="heading">Services</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="service_button active_service_tab" onclick="switchserviceTab('myserviceView',this)">Available
+                Services
+            </button>
+            <button class="service_button" onclick="switchserviceTab('addserviceView',this)">Add New Service</button>
+            <button class="service_button" onclick="switchserviceTab('updateView',this)">Remove Service</button>
+        </div>
+
+        <div id="myserviceView" class="viewClass show">
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #16cb44">Available Services</p>
+                    <div class="service_table">
+                        <table border="1"
+                               style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px; text-align: center">
+                            <tr>
+                                <th>Type of Service</th>
+                                <th>Document Size</th>
+                            </tr>
+                            <% services.forEach(function(res) { %>
+                            <tr>
+                                <td>
+                                    <%= res.service_name %>
+                                </td>
+                                <td>
+                                    <%= res.document_size %>
+
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="addserviceView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #16cb44">Add a Service:</p>
+                    <div class="addservice">
+                        <!--<form name="addservicefrm" method="post" onsubmit="return addservice()">-->
+                        <table>
+                            <tr>
+                                <th style="text-align: left">Name of Service</th>
+                                <td width="100%">
+                                    <input type="text" style="padding: 2px 7px;" name="service_name"
+                                           placeholder="Enter Service Name" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Document Size</th>
+                                <td width="100%">
+                                    <input type="text" style="padding: 2px 7px;" name="document_size"
+                                           placeholder="Enter Document Size" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;"
+                                            onclick="addservice()">Add
+                                        Service
+                                    </button>
+                            </tr>
+
+                        </table>
+                        <!--</form>-->
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="updateView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #16cb44">Remove Service:</p>
+                    <div class="addservice">
+                        <!--<form name="updateservicefrm" method="post" onsubmit="alert('Service removed successfully!')"-->
+                        <!--action="">-->
+                        <table>
+                            <tr>
+                                <th style="text-align: left">Name of Service</th>
+                                <td>
+                                    <select name="del_service_name">
+                                        <option value="0" selected>Select a Service</option>
+                                        <% services.forEach(function(res){ %>
+                                        <option><%= res.service_name %></option>
+                                        <% }) %>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Document Size</th>
+                                <td>
+                                    <select name="del_document_size">
+                                        <option value="0" selected>Select a Document Size</option>
+                                        <% services.forEach(function(res){ %>
+                                        <option><%= res.document_size %></option>
+                                        <% }) %>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;"
+                                            onclick="removeservice()">
+                                        Remove Service
+                                    </button>
+                            </tr>
+
+                        </table>
+                        <!--</form>-->
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="print_works hidden" id="designerView">
+
+        <span class="heading">simpleDesigner</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="design_button active_design_tab" onclick="switchdesignTab('sizeView',this)">Sizes</button>
+            <button class="design_button" onclick="switchdesignTab('designView',this)">Design Templates</button>
+        </div>
+
+        <div id="sizeView" class="viewClass show">
+
+            <div class="box">
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="150px" height="100px">
+                        <br> Banner
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="100px" height="150px">
+                        <br> A4
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="200px" height="110px">
+                        <br> A3
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="70px" height="110px">
+                        <br> A5
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="90px" height="150px">
+                        <br> Letter
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="130px" height="150px">
+                        <br> B0
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="100px" height="140px">
+                        <br> B1
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="180px" height="100px">
+                        <br> B2
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!--<div id="templateView" class="viewClass hidden">-->
+
+
+        <!--</div>-->
+
+        <div id="designView" class="viewClass hidden">
+
+            <div class="box">
+                <% if (typeof templates != 'undefined') { %>
+                <% templates.forEach(function (template) { %>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf/?id=<%= (template.template_id) ? template.template_id : '' %>"
+                       target="_blank">
+                        <img src="<%= (template.template_thumbnail) ? template.template_thumbnail : '' %>" width="150px"
+                             height="100px">
+                        <br> <%= (template.template_name) ? template.template_name : 'Template' %>
+                    </a>
+                </div>
+
+                <% }) %>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="print_works hidden" id="settingsView">
+
+        <span class="heading">Settings</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="settings_button active_settings_tab" onclick="switchsettingsTab('changepwdView',this)">Change
+                Password
+            </button>
+        </div>
+
+        <div id="changepwdView" class="viewClass show">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">Change Password:</p>
+                    <!--<form name="changepwdfrm" action="" method="post"-->
+                    <!--onsubmit="return changepassword()">-->
+                    <table class="contact_table">
+                        <tr>
+                            <th>Current Password</th>
+                            <td width="100%">
+                                <input type="password" name="current_psw" id="current_psw">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>New Password</th>
+                            <td>
+                                <input type="password" name="new_psw" id="new_psw">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Retype Passsword</th>
+                            <td>
+                                <input type="password" id="retype_psw" name="retype_psw">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button class="view_button" onclick="changepassword()"
+                                        style="font-size: 15px;width: 100%;">Change Password
+                                </button>
+                        </tr>
+                    </table>
+                    <!--</form>-->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    var current_tab = document.querySelector('.inner_list');
+    var current_design_tab = document.querySelector('.design_button');
+    var current_service_tab = document.querySelector('.service_button');
+    var current_settings_tab = document.querySelector('.settings_button');
+
+    function switchTo(view, elm) {
+        current_tab.classList.remove('active_icon');
+        document.getElementById(current_view).className = document.getElementById(current_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_view).className.replace("hidden", "show");
+        current_view = view;
+        current_tab = elm;
+        elm.classList.add('active_icon');
+    }
+
+    function switchdesignTab(view, elm) {
+        current_design_tab.classList.remove('active_design_tab');
+        document.getElementById(current_design_view).className = document.getElementById(current_design_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_design_view).className.replace("hidden", "show");
+        current_design_view = view;
+        current_design_tab = elm;
+        elm.classList.add('active_design_tab');
+    }
+
+    function switchserviceTab(view, elm) {
+        current_service_tab.classList.remove('active_service_tab');
+        document.getElementById(current_service_view).className = document.getElementById(current_service_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_service_view).className.replace("hidden", "show");
+        current_service_view = view;
+        current_service_tab = elm;
+        elm.classList.add('active_service_tab');
+    }
+
+    function switchsettingsTab(view, elm) {
+        current_settings_tab.classList.remove('active_settings_tab');
+        document.getElementById(current_settings_view).className = document.getElementById(current_settings_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_settings_view).className.replace("hidden", "show");
+        current_settings_view = view;
+        current_settings_tab = elm;
+        elm.classList.add('active_settings_tab');
+    }
+
+    function changepassword() {
+
+        var current_psw = document.getElementById('current_psw').value;
+        var new_psw = document.getElementById('new_psw').value;
+        var retype_psw = document.getElementById('retype_psw').value;
+
+        if (new_psw != retype_psw) {
+            alert("Error: Passwords do not match!");
+            document.getElementById('retype_psw').focus();
+            return false;
+        }
+        else {
+            qwest.post('/update_password', {
+
+                current_psw: current_psw,
+                new_psw: new_psw
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 1) {
+                        alert('Error: Current Password is Incorrect!')
+                    } else {
+                        alert('Password Changed Successfully');
+                        window.location = '/dashboard'
+                    }
+                })
+
+        }
+    }
+
+    function logout() {
+        var a = confirm('Do you want to logout?')
+        if (a == true) {
+
+            alert('Logged Out Successfully!')
+            window.location.href = '/logout'
+        }
+    }
+
+    function addservice() {
+        var service_name = document.getElementsByName('service_name')[0].value
+        var document_size = document.getElementsByName('document_size')[0].value
+
+        if(service_name== ''){
+            alert('Error: Enter a valid Service Name!')
+            document.getElementsByName('service_name')[0].focus()
+        }
+        else if(service_name.length < 3 || service_name.length > 25){
+            alert('Service Name should be atleast 3 and upto 25 characters!')
+            document.getElementsByName('service_name')[0].focus()
+        }
+        else if(!isNaN(service_name)){
+            alert('Error: Service Name cannot contain numbers!')
+            document.getElementsByName('service_name')[0].focus()
+        }
+        else if(document_size== ''){
+            alert('Error: Enter a valid Document Size!')
+            document.getElementsByName('document_size')[0].focus()
+        }
+        else if(document_size.length < 3 || service_name.length > 25){
+            alert('Document Size should be atleast 3 and upto 25 characters!')
+            document.getElementsByName('document_size')[0].focus()
+        }
+        else
+        {
+            qwest.post('/add_service', {
+                service_name: document.getElementsByName('service_name')[0].value,
+                document_size: document.getElementsByName('document_size')[0].value
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 0) {
+                        alert('Service Added Successfully!')
+                        window.location = '/dashboard'
+                    }
+                    else {
+                        alert("Error!");
+                    }
+
+                })
+        }
+
+    }
+
+    function removeservice() {
+        var del_service_name = document.getElementsByName('del_service_name')[0].value
+        var del_document_size = document.getElementsByName('del_document_size')[0].value
+        if (del_service_name == 0){
+            alert('Select a Service!')
+            document.getElementsByName('del_service_name')[0].focus()
+        }
+        else if (del_document_size == 0){
+            alert('Select a Document Size!')
+            document.getElementsByName('del_document_size')[0].focus()
+        }
+        else
+        {
+            qwest.post('/remove_service', {
+                del_service_name: document.getElementsByName('del_service_name')[0].value,
+                del_document_size: document.getElementsByName('del_document_size')[0].value
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 0) {
+                        alert('Service Removed Successfully!')
+                        window.location = '/dashboard'
+                    }
+                    else {
+                        alert("Invalid Service!");
+                    }
+
+
+                })
+        }
+
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qwest/4.5.0/qwest.min.js"></script>
+<script type="text/javascript">window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "350ee67d-45b9-4b70-91dd-78ea4d5d1db5";
+    (function () {
+        d = document;
+        s = d.createElement("script");
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();</script>
+</body>
+</html>

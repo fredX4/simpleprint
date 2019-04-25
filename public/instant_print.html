@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Instant Print | simpleprint</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="56x53" href="images/fav-icon/icon.png">
+
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <style>
+
+        body {
+            background: url("images/home/lbanner.jpg");
+        }
+
+        .viewClass {
+            margin-top: 5%;
+            margin-bottom: 5%;
+            margin-left: 25%;
+            background: #FFFFFF;
+            padding-bottom: 30px;
+            height: auto;
+            width: 55%;
+            border-bottom: 5px solid #C9182B;
+            font-size: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+        }
+
+        .viewClass > img {
+            margin-left: 39%;
+            margin-top: 55px;
+
+        }
+
+        h1 {
+            text-transform: none !important;
+            font-size: 45px;
+        }
+
+        p {
+            text-transform: none !important;
+            text-align: left;
+            font-size: 15px;
+            font-weight: bold;
+            color: #0f0f0f;
+            padding-left: 51px;
+            padding-right: 20px;
+
+        }
+
+        .text_input {
+            font-size: 15px !important;
+            margin-left: 10px;
+        }
+
+        input[type=text] {
+            width: 86% !important;
+        }
+
+        input[type=password] {
+            width: 86% !important;
+        }
+
+        input[type=checkbox] {
+            display: inline-block;
+            float: left;
+            margin-left: 27px;
+        }
+
+        .login_img {
+            float: left;
+            padding-left: 20px;
+            padding-top: 20px;
+        }
+
+        .details_table {
+            color: #0f0f0f;
+            font-size: 18px;
+            margin-left: 50px;
+            width: 86%;
+            text-align: center;
+        }
+
+        .details_table th {
+            text-align: center;
+            padding: 5px 0px;
+            font-weight: bold;
+        }
+
+        .details_table td {
+            padding: 5px 0px;
+            /*width: 100%;*/
+            font-weight: normal;
+        }
+
+        .contact_table {
+            color: #0f0f0f;
+            font-size: 18px;
+            margin-left: 50px;
+            width: 86%;
+            text-align: left;
+        }
+
+        .contact_table th {
+            padding: 5px 0px;
+            font-weight: bold;
+        }
+
+        .contact_table td {
+            padding: 5px 0px;
+            width: 100%;
+            font-weight: normal;
+        }
+
+        .contact_table a {
+            color: #00A0D1 !important;
+            padding-left: 5px;
+        }
+
+        .view_button {
+            font-size: 12px;
+            padding: 8px 15px;
+            width: auto;
+            color: #db1340;
+            display: inline-block;
+            border: 2px solid #db1340;
+            background: #FFFFFF;
+            margin-right: 15px;
+            margin-top: 8px;
+        }
+
+        .view_button:hover {
+            background: #db1340;
+            color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .details_table a {
+            color: #00A0D1 !important;
+        }
+
+        #map {
+            margin-top: 5px;
+            /*background: #00A0D1;*/
+            width: 91.5%;
+            height: 400px;
+            margin-left: 32px;;
+        }
+
+        .entry {
+            display: inline-block;
+            /*padding: 0px 15px;*/
+            margin-top: 18px;
+            /*font-weight: bold;*/
+        }
+
+        .entry p {
+            padding-left: 20px;
+            /*font-weight: bold;*/
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<div class="viewClass show" id="addfileView">
+
+    <div class="login_img">
+        <a href="/"><img src="./images/logo/logo_black.png" width="130" height="40"></a>
+    </div>
+    <br>
+
+    <img src="./images/home/printer.png" width="150" height="150"><br>
+    <h1>Instant Print</h1>
+    <p style="text-align: center; font-weight: normal">Make your print jobs instantly</p>
+
+
+    <p>Name</p>
+    <input type="text" class="text_input" placeholder="Enter Name" id="name">
+    <p>City</p>
+    <input type="text" class = "text_input" name='city' placeholder="City" required id="city" autocomplete=off>
+    <input type="hidden" id="shop_lat" name="shop_lat">
+    <input type="hidden" id = "shop_lng" name="shop_lng">
+    <p>Phone</p>
+    <input type="text" class="text_input" placeholder="Enter Phone" id="phone"><br>
+    <p style="font-size: 20px; color: #ff2b2b; font-weight: bold;">Add File Details</p>
+
+    <!--<form id="addfilefrm" method="post" onsubmit="return addFile()">-->
+        <table style="margin-top: 5px" class="contact_table">
+
+            <tr>
+                <th>Type of Service</th>
+                <td>
+                    <select id="service">
+                        <option value="0">Select a Service</option>
+                        <!--<option value="s01">Color Laser Print</option>-->
+                        <!--<option value="s02">Black and White Laser Print</option>-->
+                        <!--<option value="s03">Matte Lamination</option>-->
+                        <!--<option value="s04">Glossy Lamination</option>-->
+                        <!--<option value="s05">Cup Printing</option>-->
+                        <!--<option value="s06">Flex Printing</option>-->
+                        <!--<option value="s07">Vinyl Printing</option>-->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Document Size</th>
+                <td>
+                    <select id="document_size">
+                        <!--<option value="0">Select a Size</option>-->
+                        <!--<option value="d01">A3</option>-->
+                        <!--<option value="d02">A4</option>-->
+                        <!--<option value="d03">A5</option>-->
+                        <!--<option value="d04">Letter</option>-->
+                        <!--<option value="d05">B0</option>-->
+                        <!--<option value="d06">B1</option>-->
+                        <!--<option value="d07">B2</option>-->
+                        <!--<option value="d07">3ft x 4ft</option>-->
+                        <!--<option value="d08">6ft x 4 ft</option>-->
+                        <!--<option value="d09">12ft x 10ft</option>-->
+                        <!--<option value="d10">5' Ceramic Cup</option>-->
+                        <!--<option value="d11">5' Plastic Cup</option>-->
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>File</th>
+                <td>
+                    <input type="file" id="submitfile" style="padding: 2px 0px;">
+                </td>
+            </tr>
+            <tr>
+                <th>Copies</th>
+                <td>
+                    <input type="text" style="padding: 2px 7px;" id="copies" value="1">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button class="view_button" style="font-size: 15px;width: 60%;float: right; margin-right: 50px" onclick="addFile()">Add File</button>
+            </tr>
+        </table>
+    <!--</form>-->
+
+    <script>
+        function addFile() {
+
+            var service = document.getElementById('service').value;
+            var document_size = document.getElementById('document_size').value;
+            var copies = document.getElementById('copies').value.trim();
+
+            if (service == 0) {
+                alert('Select a Service!')
+                document.getElementById('service').focus()
+                return false
+            }
+            if (document_size == 0) {
+                alert('Select a Document Size!')
+                document.getElementById('document_size').focus()
+                return false
+            }
+            if (copies == "") {
+                alert("Enter number of copies!")
+                document.getElementById('copies').focus()
+                return false
+            }
+            if (isNaN(copies) || (copies.length > 6)) {
+                alert("Enter valid number of copies!")
+                document.getElementById('copies').focus()
+                return false
+            }
+
+            //File Upload
+            var fileName = document.getElementById('submitfile').value;
+            if (fileName == "") {
+                alert("Select a File!")
+                document.getElementById('submitfile').focus()
+                return false
+            }
+            var allowed_extensions = new Array("jpg", "png", "tiff", "psd", "raw", "cdr", "ai", "eps", "pdf", "jpeg", "bmp");
+            var file_extension = fileName.split('.').pop().toLowerCase(); // split function will split the filename by dot(.), and pop function will pop the last element from the array which will give you the extension as well. If there will be no extension then it will return the filename.
+
+            for (var i = 0; i <= allowed_extensions.length; i++) {
+                if (allowed_extensions[i] == file_extension) {
+                    //Enter Script for entering details in the database
+
+                    var file = document.getElementById('submitfile').files[0];
+                    uploadFile(file, function (err, img_url) {
+
+                        console.log(img_url)
+                        if (err) {
+
+                            alert('Error uploading image!')
+
+                        } else {
+
+                            var table = document.getElementById('user_details_table')
+                            var tbody = table.getElementsByTagName('tbody')
+
+                            var tr = document.createElement("tr");
+
+                            var ser_td = document.createElement("td")
+                            ser_td.textContent = document.getElementById('service').value;
+
+                            var siz_td = document.createElement("td")
+                            siz_td.textContent = document.getElementById('document_size').value;
+
+                            var fil_td = document.createElement("td")
+                            fil_td.innerHTML = (document.getElementById('submitfile').value).split('\\')[2];
+
+                            var cop_td = document.createElement("td")
+                            cop_td.textContent = document.getElementById('copies').value;
+
+                            var temp_id = Date.now()
+                            var rem_td = document.createElement("td")
+
+                            rem_td.innerHTML = '<a href="#" onclick="remove(' + temp_id + ')">remove</a>';
+
+
+
+                            tr.dataset.id = temp_id
+                            tr.appendChild(ser_td);
+                            tr.appendChild(siz_td);
+                            tr.appendChild(fil_td);
+                            tr.appendChild(cop_td);
+                            tr.appendChild(rem_td);
+
+                            table.appendChild(tr);
+
+                            active_services.push({
+                                service_id: document.getElementById('document_size').value,
+                                file_url: img_url,
+                                copies: document.getElementById('copies').value,
+                                temp_id: temp_id
+                            })
+
+                            document.getElementById('submitfile').value = ''
+
+
+                        }
+
+                    });
+
+
+
+                    return false; // valid file extension
+                }
+            }
+
+            alert("Invalid file format!")
+            document.getElementById('submitfile').focus()
+            return false;
+        }
+    </script>
+
+    <div style=" padding-bottom: 50px; width: auto" class="detailed_entry">
+        <p style="font-weight: bold; font-size: 20px">Print Job Details:</p>
+
+        <table class="details_table" border="1" id="user_details_table">
+            <thead>
+            <tr>
+                <th>Service</th>
+                <th>Size</th>
+                <th>File</th>
+                <th>Copies</th>
+                <th>Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <br>
+        <button class="view_button" style="font-size: 15px;float: right;width: 19.5%;margin-right: 55px; "
+                onclick="return validate_details()">Next
+        </button>
+    </div>
+</div>
+
+<script>
+    var psp_data = []
+    var active_psp = {}
+    function validate_details() {
+
+        var name = document.getElementById('name').value.trim();
+        var city = document.getElementById('city').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        if (name == ""){
+            alert("Enter a Name!")
+            document.getElementById('name').focus()
+            return false
+        }
+        if (!(isNaN(name))){
+            alert("Enter a valid Name!")
+            document.getElementById('name').focus()
+            return false
+        }
+
+        if ((name.length < 3) || (name.length > 25)){
+            alert("Name should have 3 - 25 characters!")
+            document.getElementById('name').focus()
+            return false
+        }
+
+        if (city == ""){
+            alert("Enter a City!")
+            document.getElementById('city').focus()
+            return false
+        }
+        if (!(isNaN(city))){
+            alert("Enter a valid City!")
+            document.getElementById('city').focus()
+            return false
+        }
+
+        if (phone == ""){
+            alert("Enter a Phone Number!")
+            document.getElementById('phone').focus()
+            return false
+        }
+
+        if (isNaN(phone)){
+            alert("Enter a valid Phone Number!")
+            document.getElementById('phone').focus()
+            return false
+        }
+
+        if (phone.length != 10){
+            alert("Phone Number should have 10 Digits!")
+            document.getElementById('phone').focus()
+            return false
+        }
+
+        qwest.post('/user/find_psp', {
+            data: active_services,
+            user_lat:user_lat,
+            user_lng:user_lng
+        })
+            .then(function (xhr, json) {
+
+                if (json.error == 0) {
+
+                    showNext('selectpspView', 'addfileView');
+
+
+                    goMap();
+
+                    var image = 'images/logo/map.png';
+                    markers = [];
+                    psp_data = json.result
+
+                    for (var i = 0, len = json.result.length; i < len; i++) {
+                        markers[i] = new google.maps.Marker({
+                            position: {
+                                lat: parseFloat(json.result[i].lat),
+                                lng: parseFloat(json.result[i].lng)
+                            },
+                            map: map,
+                            icon: image,
+                            title: json.result[i].name,
+                            animation: google.maps.Animation.DROP
+                        });
+
+                        var tooltip = new google.maps.InfoWindow({
+                            content: '<h6>' + json.result[i].name + '</h6> <p>' + json.result[i].user_address + '</p> <p> Total Rate:' +  json.result[i].rate + '</p>'
+                        })
+
+
+                        tooltip.open(map, markers[i]);
+                        listenMarker(markers[i],tooltip, i)
+
+                    }
+                }
+
+
+            })
+    }
+
+
+
+    function listenMarker (marker,tooltip,i)
+    {
+        // so marker is associated with the closure created for the listenMarker function call
+        google.maps.event.addListener(marker, 'click', function() {
+            tooltip.open(map, marker);
+            active_psp = psp_data[i]
+            document.getElementById('selected_psp_name').innerHTML = psp_data[i].name
+            document.getElementById('selected_psp_rate').innerHTML = psp_data[i].rate
+            document.getElementById('selected_psp_status').innerHTML = 'Open'
+
+
+        });
+    }
+</script>
+
+
+<div class="viewClass hidden" id='selectpspView'>
+    <p style="font-size: 20px; color: #ff2b2b; font-weight: bold;padding-top: 30px">Select PSP</p>
+
+    <div class="map-area">
+        <div id="map"></div>
+    </div>
+    <div class="entry">
+        <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">Selected PSP</p>
+        <P style="font-weight: bold; color: red; font-size: 20px"> Suvi Laser Press</P>
+
+    </div>
+    <div class="entry" style="border-left: 2px solid #333333">
+        <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">Status</p>
+        <P style="font-weight: bold; color: red; font-size: 20px">Open</P>
+    </div>
+
+    <div class="entry" style="border-left: 2px solid #333333">
+        <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">Total Job Cost</p>
+        <P style="font-weight: bold; color: red; font-size: 20px">5500</P>
+    </div>
+
+    <div class="entry" style="border-left: 2px solid #333333">
+        <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">Overall Rating</p>
+        <P style="font-weight: bold; color: red; font-size: 20px">4.5/5</P>
+    </div>
+
+    <br><br>
+    <button class="view_button" style="font-size: 15px;float: left;width: 15%;margin-left: 30px;"
+            onclick="showPrevious('addfileView','selectpspView')">Previous
+    </button>
+
+    <button class="view_button" style="font-size: 15px;float: right; width: 15%;margin-right: 30px;" onclick="addJobAndPay()">
+        Pay Online
+    </button>
+    <br><br><br>
+
+
+</div>
+
+<!-- Google map js -->
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=goMap"-->
+        <!--type="text/javascript"></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ7Y8ZCWIYUk-Y9rPHvvqtCiTWt1TKBxY&libraries=places&callback=initAutocomplete" async defer></script>
+
+<!-- Gmap Helper -->
+<script src="vendor/gmaps.min.js"></script>
+<!-- j Query -->
+<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
+
+<script>
+
+    // function validateprofile(){
+    //
+    //     var name = document.getElementById('name').value.trim();
+    //     var city = document.getElementById('city').value.trim();
+    //     var phone = document.getElementById('phone').value.trim();
+    //     if (name == ""){
+    //         alert("Enter a Name!")
+    //         document.getElementById('name').focus()
+    //         return false
+    //     }
+    //     if (!(isNaN(name))){
+    //         alert("Enter a valid Name!")
+    //         document.getElementById('name').focus()
+    //         return false
+    //     }
+    //
+    //     if ((name.length < 3) || (name.length > 25)){
+    //         alert("Name should have 3 - 25 characters!")
+    //         document.getElementById('name').focus()
+    //         return false
+    //     }
+    //
+    //     if (city == ""){
+    //         alert("Enter a City!")
+    //         document.getElementById('city').focus()
+    //         return false
+    //     }
+    //     if (!(isNaN(city))){
+    //         alert("Enter a valid City!")
+    //         document.getElementById('city').focus()
+    //         return false
+    //     }
+    //
+    //     if (phone == ""){
+    //         alert("Enter a Phone Number!")
+    //         document.getElementById('phone').focus()
+    //         return false
+    //     }
+    //
+    //     if (isNaN(phone)){
+    //         alert("Enter a valid Phone Number!")
+    //         document.getElementById('phone').focus()
+    //         return false
+    //     }
+    //
+    //     if (phone.length != 10){
+    //         alert("Phone Number should have 10 Digits!")
+    //         document.getElementById('phone').focus()
+    //         return false
+    //     }
+    //
+    //     //Include Script for validation if atleast one Print Job isn't present
+    //
+    //     showNext('selectpspView','addfileView');
+    // }
+    //
+    // function  addFile() {
+    //
+    //     var service = document.getElementById('service').value;
+    //     var document_size = document.getElementById('document_size').value;
+    //     var copies = document.getElementById('copies').value.trim();
+    //
+    //     if (service == 0){
+    //         alert('Select a Service!')
+    //         document.getElementById('service').focus()
+    //         return false
+    //     }
+    //     if (document_size == 0){
+    //         alert('Select a Document Size!')
+    //         document.getElementById('document_size').focus()
+    //         return false
+    //     }
+    //     if (copies == ""){
+    //         alert("Enter number of copies!")
+    //         document.getElementById('copies').focus()
+    //         return false
+    //     }
+    //     if (isNaN(copies) || (copies.length > 6) ){
+    //         alert("Enter valid number of copies!")
+    //         document.getElementById('copies').focus()
+    //         return false
+    //     }
+    //
+    //     //File Upload
+    //     var fileName = document.getElementById('submitfile').value;
+    //     if (fileName == ""){
+    //         alert("Select a File!")
+    //         document.getElementById('submitfile').focus()
+    //         return false
+    //     }
+    //     var allowed_extensions = new Array("jpg","png","tiff","psd","raw","cdr","ai","eps","pdf","jpeg","bmp");
+    //     var file_extension = fileName.split('.').pop().toLowerCase(); // split function will split the filename by dot(.), and pop function will pop the last element from the array which will give you the extension as well. If there will be no extension then it will return the filename.
+    //
+    //     for(var i = 0; i <= allowed_extensions.length; i++)
+    //     {
+    //         if(allowed_extensions[i]==file_extension)
+    //         {
+    //             //Enter Script for entering details in the database
+    //
+    //             return true; // valid file extension
+    //         }
+    //     }
+    //
+    //     alert("Invalid file format!")
+    //     document.getElementById('submitfile').focus()
+    //     return false;
+    // }
+
+    function showNext(view, elm) {
+        document.getElementById(view).className = document.getElementById(view).className.replace("hidden", "show");
+        document.getElementById(elm).className = document.getElementById(elm).className.replace("show", "hidden");
+
+    }
+
+    function showPrevious(view, elm) {
+        document.getElementById(view).className = document.getElementById(view).className.replace("hidden", "show");
+        document.getElementById(elm).className = document.getElementById(elm).className.replace("show", "hidden");
+
+    }
+
+    // "use strict";
+
+    var map;
+
+    var user_lat = document.getElementById('shop_lat').value;
+
+    var user_lng = document.getElementById('shop_lng').value;
+
+    function goMap() {
+        if ($('#map').length) {
+            // Styles a map in night mode.
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: user_lat,
+                    lng: user_lng
+                },
+                zoom: 11,
+                scrollwheel: false
+            });
+
+            // To add the marker to the map
+
+        };
+    };
+    // Dom Ready Function
+    jQuery(document).on('ready', function () {
+        (function ($) {
+            // add your functions
+
+        })(jQuery);
+    });
+
+    var placeSearch, autocomplete, globalSpace;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */
+            (document.getElementById('city')), {
+                types: ['geocode']
+            });
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+        globalSpace = place;
+        document.getElementsByName('shop_lng')[0].value = place.geometry.location.lng();
+        document.getElementsByName('shop_lat')[0].value = place.geometry.location.lat();
+        return;
+    }
+
+    var services = {};
+
+    function fetchServices() {
+
+        fetch('/user/list_services')
+            .then(data => data.json())
+    .then(json => {
+
+            //                    services = json;
+
+            var services_html = '<option value="none"> Select Service </option>';
+
+        var temp_services = {}
+
+        for (var i = 0; i < json.length; i++) {
+
+            console.log(json[i].service_name)
+
+            if (typeof temp_services[json[i].service_name] != 'undefined') {
+
+
+                continue;
+            }
+
+            temp_services[json[i].service_name] = 1
+            services[json[i].service_name] = []
+
+            for (var j = 0; j < json.length; j++) {
+
+                if (json[i].service_name == json[j].service_name) {
+                    services[json[i].service_name].push(json[j])
+                }
+            }
+
+
+            services_html += "<option value=\"" + json[i].service_name + "\">" + json[i].service_name + "</option>"
+
+
+        }
+
+        document.getElementById('service').innerHTML = services_html
+
+    })
+
+    }
+
+    document.getElementById('service').addEventListener('click', function (e) {
+
+        console.log(e.target.value)
+
+        var sizes = services[e.target.value]
+
+        var size_html = '<option> Select Size</option>'
+
+
+        for (var j = 0; j < sizes.length; j++) {
+
+            size_html = "<option value=\"" + sizes[j].service_id + "\">" + sizes[j].document_size + "</option>"
+
+        }
+
+        document.getElementById('document_size').innerHTML = size_html
+
+    })
+
+    fetchServices()
+
+    active_services = []
+
+    function uploadFile(file, cb) {
+
+        var frm = new FormData();
+        frm.append("file", file);
+        qwest.post('user/upload', frm)
+            .then(function (xhr, json) {
+
+
+                if (json.error == 0) {
+
+
+                    if (cb) {
+                        cb(null, json.location)
+                    } else {
+
+                        if (cb) {
+                            cb(null);
+                        }
+                    }
+                }
+
+            });
+
+    }
+
+
+    function addJobAndPay() {
+
+
+        var data = {
+            job_details:active_services,
+            provider: active_psp
+        }
+
+        qwest.post('/user/add_job', data)
+            .then(function (xhr,json) {
+
+                if(json.error != 0 ) {
+
+                    alert('Error submiting job')
+                    return
+                }
+
+
+                var options = {
+                    "key": "rzp_test_PX8lUQLftdiT0N",
+                    "amount": active_psp.rate * 100,
+                    "name": active_psp.name,
+                    "description": active_psp.user_address,
+                    "image": "/your_logo.png",
+                    "handler": function (response){
+
+
+                        qwest.post('/user/update_job_payment', {raz_payment_id:response.razorpay_payment_id, payment_id: json.payment_id })
+                            .then(function (xhr,json) {
+
+                                if(json.error == 1) {
+
+                                    alert('payment failed')
+
+                                }
+
+                                else {
+
+                                    window.location = './dashoard/success'
+                                }
+
+                            })
+
+                    },
+                    "prefill": {
+                        "name": "<%= typeof name != 'undefined' ? name : '' %>",
+                        "email": "<%= typeof email != 'undefined' ? email : '' %>",
+                        "contact": "<%= typeof phone != 'undefined' ? phone : '' %>"
+                    },
+                    "notes": {
+                        "address": active_psp.user_address,
+                        "payment_id": json.payment_id
+                    },
+                    "theme": {
+                        "color": "#C9182B"
+                    },
+                    "modal": {
+                        ondismiss: function () {
+
+                            alert('Payment not completed')
+
+                        }
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+
+
+            })
+
+    }
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qwest/4.5.0/qwest.min.js"></script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="350ee67d-45b9-4b70-91dd-78ea4d5d1db5";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="56x53" href="images/fav-icon/icon.png">
+
+    <title>Select Location</title>
+    <style>
+        * {
+            margin: 0px;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        
+        #mapbox {
+            display: block;
+            height: 85%;
+            width: 100%;
+            position: relative;
+            /*            top: 5%;*/
+            margin: 0 auto;
+            box-shadow: 1px 1px 1px #e1e1e1;
+        }
+
+        .setLocation {
+            font-size: 15px;
+            padding: 8px 55px;
+            width: auto;
+            color: #db1340;
+            position: center;
+            display: inline-block;
+            border: 2px solid #db1340;
+            background: #FFFFFF;
+            margin-right: 15px;
+            margin-top: 30px;
+        }
+
+        .setLocation:hover {
+            background: #db1340;
+            color: #fff;
+            transition: all 0.2s ease;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="mapbox">
+        <div id="map">
+
+
+        </div>
+
+    </div>
+
+    <input type="hidden" id="shop_lat">
+    <input type="hidden" id="shop_lon">
+
+    <div style="text-align: center">
+    <button class="setLocation">Set Location</button>
+    </div>
+   
+    <script>
+        var location_url = (location.hash.replace('#','')).split(',')
+        var lat = location_url[0],
+            lon = location_url[1];
+            
+
+         
+        
+        function initmap() {
+
+
+            var myLatlng = new google.maps.LatLng(lat, lon);
+            var mapOptions = {
+                zoom: 14,
+                center: myLatlng
+            }
+            
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            // Place a draggable marker on the map
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                draggable: true,
+                title: "Drag me!"
+            });
+
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+//                document.getElementById('shop_lat').value = (this.getPosition().lat());
+//                document.getElementById('shop_lon').value(this.getPosition().lng());
+                
+                window.opener.postMessage({type:'sha',str:(this.getPosition().lat()) + ',' + (this.getPosition().lng())}, '*')
+                
+                lat = this.getPosition().lat();
+                lng = this.getPosition().lng()
+            });
+        }
+
+        
+        
+        function setLocation() {
+            
+            
+            window.opener.setLocations(lat,lng)
+            
+        }
+        
+        
+
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ7Y8ZCWIYUk-Y9rPHvvqtCiTWt1TKBxY&callback=initmap">
+    </script>
+</body>
+
+</html>

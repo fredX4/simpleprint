@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For Responsive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>simpleprint | Home</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="56x53" href="images/fav-icon/icon.png">
+
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <style>
+
+        body {
+            overflow: hidden;
+        }
+
+        .sidebar {
+            float: left;
+            display: block;
+            background: #272c32;
+            width: 20%;
+            height: 780px;
+            box-sizing: border-box;
+        }
+
+        .user_details {
+            color: #FFFFFF;
+            font-weight: bold;
+
+        }
+
+        .user_details > img {
+            border-radius: 50%;
+            border: solid 3px #FFFFFF;
+            margin-top: 40px;
+            margin-left: 85px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .user_details > span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .inner_list {
+            height: 40px;
+            background: #272c32;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .inner_list > img {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .main_space {
+            position: fixed;
+            margin-left: 20%;
+            width: 80%;
+            height: 100%;
+            background: #4b565c;
+            overflow-y: auto;
+            padding-bottom: 10px;
+        }
+
+        .print_works {
+            display: inline-block;
+            width: 100%;
+            height: auto;
+            background: #4b565c;
+            /*border-radius: 20px;*/
+            /*position: relative;*/
+            /*top: 20px;*/
+            /*left: 20px;*/
+            /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+        }
+
+        .heading {
+            padding-left: 35px;
+            padding-top: 30px;
+            font-weight: bolder;
+            font-size: 40px;
+            display: inline-block;
+            text-transform: none;
+            color: #FFFFFF;
+        }
+
+        .header_logo{
+            margin-right: 40px;
+            margin-top: 40px;
+            float: right;
+            display: inline-block
+
+        }
+
+        .active_icon {
+            background: #4b565c;
+        }
+
+        .active_sub_tab {
+            /*background: #db9630;*/
+            border: 2px solid #db9630;
+        }
+
+        .active_design_tab {
+            /*background: #db9630;*/
+            border: 2px solid #db3728;
+        }
+
+        .active_service_tab {
+            /*background: #db9630;*/
+            border: 2px solid #16cb44;
+        }
+
+        .active_settings_tab {
+            /*background: #db9630;*/
+            border: 2px solid #0cb2cb;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .card_space {
+            background: #ffffff;
+            width: 97%;
+            height: auto;
+            margin-bottom: 20px;
+            /*margin-left: 32px;*/
+            /*margin-top: 15px;*/
+            padding-bottom: 18px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .viewClass {
+            /*background: red;*/
+            margin-left: 32px;
+            margin-top: 15px;
+        }
+
+        .tab {
+            display: inline-block;
+            margin-left: 30px;
+            margin-top: -8px;
+        }
+
+        .tab_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .tab_button:hover {
+            background: #db9630;
+            transition: all 0.2s ease;
+        }
+
+        .design_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .design_button:hover {
+            background: #db3728;
+            transition: all 0.2s ease;
+        }
+
+        .service_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .service_button:hover {
+            background: #16cb44;
+            transition: all 0.2s ease;
+        }
+
+        .settings_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .settings_button:hover {
+            background: #0cb2cb;
+            transition: all 0.2s ease;
+        }
+
+        .entry {
+            display: inline-block;
+            font-size: 20px;
+            padding: 0px 15px;
+            margin-top: 18px;
+            /*font-weight: bold;*/
+        }
+
+        .view_button {
+            font-size: 12px;
+            padding: 8px 15px;
+            width: auto;
+            color: #db1340;
+            display: inline-block;
+            border: 2px solid #db1340;
+            background: #FFFFFF;
+            margin-right: 15px;
+            margin-top: 8px;
+        }
+
+        .view_button:hover {
+            background: #db1340;
+            color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .detailed_entry {
+            /*background: #272c32;*/
+            width: 97%;
+            height: auto;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-left: 15px;
+        }
+
+        td, th {
+            padding: 4px 64px;
+        }
+
+        .service_table th, .service_table td {
+            padding: 4px 104px;
+        }
+
+        .addservice th, addservice td {
+            width: 25%;
+            padding: 3px 30px;
+        }
+
+        .box {
+            /*background: #00A0D1;*/
+            width: 100%;
+            margin-top: -15px;
+            margin-left: -3px;
+        }
+
+        .card {
+            display: inline-block;
+            width: 150px;
+            height: 200px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            /*background: #2eff5b;*/
+            margin: 10px;
+            color: #fff;
+        }
+
+        .card a:active, a:visited {
+            color: #fff !important;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            color: #db3728 !important;
+            transition: all 0.3s ease;
+        }
+
+        .card img {
+            display: inline-block !important;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border: 1px solid #fff;
+            margin-bottom: 10px;
+            /*align-content: center;*/
+        }
+
+        select {
+            width: 100% !important;
+            height: 35px;
+            margin-bottom: 3px
+
+        }
+
+        .profile span {
+            font-size: 35px;
+            font-weight: bold;
+            color: #0f0f0f;
+            margin-left: 30px;
+        }
+
+        .contact_table th {
+            font-weight: normal;
+        }
+
+        .details_table  a{
+            color: #00A0D1 !important;
+        }
+
+        .contact_table a {
+            color: #00A0D1 !important;
+            padding-left: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<script>
+    var current_view = 'printView';
+    var current_sub_view = 'pendingView';
+    var current_design_view = 'sizeView';
+    var current_service_view = 'myserviceView';
+    var current_settings_view = 'profileView';
+
+</script>
+<div class="sidebar">
+
+    <div class="user_details" style=" text-align: center;">
+        <img src="images/home/avatar.png">
+        <br>
+        <span>Suvi Laser Press</span><br>
+        <span style="font-weight: lighter; font-size: 16px">Changanacherry</span>
+        <p style="font-size: large; color: #f7e505">Overall Rating: 4.5/5</p>
+    </div>
+    <hr width="90%">
+
+
+    <button class="inner_list active_icon" onclick="switchTo('printView',this)">
+        <img src="images/png_new/print_works.png">Print Works
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('serviceView',this)">
+        <img src="images/png_new/services.png">My Services
+    </button>
+
+    <button class="inner_list" onclick="switchTo('designerView',this)">
+        <img src="images/png_new/designer.png">simpleDesigner
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('feedbackView',this)">
+        <img src="images/png_new/feedback.png">Customer Feedback
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('settingsView',this)">
+        <img src="images/png_new/settings.png">Settings
+    </button>
+
+
+    <button class="inner_list" onclick="return logout()">
+        <img src="images/png_new/logout.png">Logout
+    </button>
+    <hr width="90%">
+</div>
+
+<div class="main_space">
+
+    <div class="print_works show" id="printView">
+
+        <span class="heading">Print Works</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="tab_button active_sub_tab" onclick="switchTab('pendingView',this)">Pending</button>
+            <button class="tab_button" onclick="switchTab('completedView',this)">Completed</button>
+        </div>
+
+        <div id="pendingView" class="viewClass show">
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red"> 2357</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> 27.10.2017</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red">Freddy Jetty Johnson</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Phone:</p>
+                    <P style="font-weight: bolder; color: red">9645151693</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red">2350</P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_2357' onclick="showDetails('2357')">View Details</button>
+                    <button class="view_button hidden" id='hide_2357' onclick="hideDetails('2357')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_2357'>
+                    <p>Print Job Details:</p>
+                    <table class="details_table" border="1">
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Color Laser Print</td>
+                            <td>A4</td>
+                            <td><a href="">final.jpg</a></td>
+                            <td>2</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Matte Lamination</td>
+                            <td>A3</td>
+                            <td><a href="">print.jpg</a></td>
+                            <td>5</td>
+                            <td>500</td>
+                        </tr>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold">T10022422148</span>
+                    <button id="mark_2357" class="view_button" style="float: right"
+                            onclick="return completejob('2357')">Mark as Completed
+                    </button>
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold">Internet Banking</span>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red">2358</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> 28.10.2017</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red">Barry Allen</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Phone:</p>
+                    <P style="font-weight: bolder; color: red">8848552811</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red">550</P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_2358' onclick="showDetails('2358')">View Details</button>
+                    <button class="view_button hidden" id='hide_2358' onclick="hideDetails('2358')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_2358'>
+                    <p>Print Job Details:</p>
+                    <table class="details_table" border="1">
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>A5 Color Laser Print</td>
+                            <td>A4</td>
+                            <td><a href="">notice.jpg</a></td>
+                            <td>2</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Matte Lamination</td>
+                            <td>A3</td>
+                            <td><a href="">print.jpg</a></td>
+                            <td>5</td>
+                            <td>500</td>
+                        </tr>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold">T10022422148</span>
+                    <button id="mark_2358" class="view_button" style="float: right"
+                            onclick="return completejob('2358')">Mark as Completed
+                    </button>
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold">Internet Banking</span>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red">3102</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> 29.10.2017</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red">Harrison Wells</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Phone:</p>
+                    <P style="font-weight: bolder; color: red">9645151693</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red">3350</P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_3102' onclick="showDetails('3102')">View Details</button>
+                    <button class="view_button hidden" id='hide_3102' onclick="hideDetails('3102')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_3102'>
+                    <p>Print Job Details:</p>
+                    <table class="details_table" border="1">
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Color Laser Print</td>
+                            <td>A4</td>
+                            <td><a href="">final.jpg</a></td>
+                            <td>2</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Matte Lamination</td>
+                            <td>A3</td>
+                            <td><a href="">print.jpg</a></td>
+                            <td>5</td>
+                            <td>500</td>
+                        </tr>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold">T10022422148</span>
+                    <button id="mark_3102" class="view_button" style="float: right"
+                            onclick="return completejob('3102')">Mark as Completed
+                    </button>
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold">Internet Banking</span>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div id="completedView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red"> 3252</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> 27.11.2017</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red">Inovus Labs</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Phone:</p>
+                    <P style="font-weight: bolder; color: red">9895317121</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red">5300</P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_3252' onclick="showDetails('3252')">View Details</button>
+                    <button class="view_button hidden" id='hide_3252' onclick="hideDetails('3252')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_3252'>
+                    <p>Print Job Details:</p>
+                    <table class="details_table" border="1">
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Color Laser Print</td>
+                            <td>A4</td>
+                            <td><a href="">final.jpg</a></td>
+                            <td>2</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Matte Lamination</td>
+                            <td>A3</td>
+                            <td><a href="">print.jpg</a></td>
+                            <td>5</td>
+                            <td>500</td>
+                        </tr>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold">T10022422148</span>
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold">Internet Banking</span>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red">5558</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> 28.10.2017</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red">Kristu Jyoti College</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Phone:</p>
+                    <P style="font-weight: bolder; color: red">04692700653</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red">550</P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_5558' onclick="showDetails('5558')">View Details</button>
+                    <button class="view_button hidden" id='hide_5558' onclick="hideDetails('5558')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_5558'>
+                    <p>Print Job Details:</p>
+                    <table class="details_table" border="1">
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>A5 Color Laser Print</td>
+                            <td>A4</td>
+                            <td><a href="">notice.jpg</a></td>
+                            <td>2</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Matte Lamination</td>
+                            <td>A3</td>
+                            <td><a href="">print.jpg</a></td>
+                            <td>5</td>
+                            <td>500</td>
+                        </tr>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold">T10022422148</span>
+
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold">Internet Banking</span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="print_works hidden" id="serviceView">
+
+        <span class="heading">My Services</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="service_button active_service_tab" onclick="switchserviceTab('myserviceView',this)">My
+                Services
+            </button>
+            <button class="service_button" onclick="switchserviceTab('addserviceView',this)">Add New Service</button>
+            <button class="service_button" onclick="switchserviceTab('updateView',this)">Update Service</button>
+        </div>
+
+        <div id="myserviceView" class="viewClass show">
+            <div class="card_space">
+                <div class="entry">
+                    <p>List of Available Services:</p>
+                    <div class="service_table">
+                        <table border="1">
+                            <tr>
+                                <th>Type of Service</th>
+                                <th>Document Size</th>
+                                <th>Rate</th>
+                            </tr>
+                            <tr>
+                                <td>Color Laser Print</td>
+                                <td>A4</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="addserviceView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #16cb44">Add a Service:</p>
+                    <div class="addservice">
+                        <form id="addservicefrm" method="post" onsubmit="return addservice()">
+                            <table>
+                                <tr>
+                                    <th style="text-align: left">Name of Service</th>
+                                    <td>
+                                        <select id="service">
+                                            <option value="0">Select a Service</option>
+                                            <option value="s01">Color Laser Print</option>
+                                            <option value="s02">Black and White Laser Print</option>
+                                            <option value="s03">Matte Lamination</option>
+                                            <option value="s04">Glossy Lamination</option>
+                                            <option value="s05">Cup Printing</option>
+                                            <option value="s06">Flex Printing</option>
+                                            <option value="s07">Vinyl Printing</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Document Size</th>
+                                    <td>
+                                        <select id="document_size">
+                                            <option value="0">Select a Size</option>
+                                            <option value="d01">A3</option>
+                                            <option value="d02">A4</option>
+                                            <option value="d03">A5</option>
+                                            <option value="d04">Letter</option>
+                                            <option value="d05">B0</option>
+                                            <option value="d06">B1</option>
+                                            <option value="d07">B2</option>
+                                            <option value="d07">3ft x 4ft</option>
+                                            <option value="d08">6ft x 4 ft</option>
+                                            <option value="d09">12ft x 10ft</option>
+                                            <option value="d10">5' Ceramic Cup</option>
+                                            <option value="d11">5' Plastic Cup</option>
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Rate</th>
+                                    <td width="100%">
+                                        <input type="text" style="padding: 2px 7px;" id="rate"
+                                               pattern = "[0-9]{1,5}" placeholder="Enter Rate" title="Enter a valid rate, upto 10,000" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="view_button" style="font-size: 15px;width: 100%;">Add
+                                            Service
+                                        </button>
+                                </tr>
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="updateView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #16cb44">Update Service:</p>
+                    <div class="addservice">
+                        <form id="updateservicefrm" method="post" onsubmit="return updateservice()">
+                            <table>
+                                <tr>
+                                    <th style="text-align: left">Name of Service</th>
+                                    <td>
+                                        <select id="uservice">
+                                            <option value="0">Select a Service</option>
+                                            <option value="s01">Color Laser Print</option>
+                                            <option value="s02">Black and White Laser Print</option>
+                                            <option value="s03">Matte Lamination</option>
+                                            <option value="s04">Glossy Lamination</option>
+                                            <option value="s05">Cup Printing</option>
+                                            <option value="s06">Flex Printing</option>
+                                            <option value="s07">Vinyl Printing</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Document Size</th>
+                                    <td>
+                                        <select id="udocument_size">
+                                            <option value="0">Select a Size</option>
+                                            <option value="d01">A3</option>
+                                            <option value="d02">A4</option>
+                                            <option value="d03">A5</option>
+                                            <option value="d04">Letter</option>
+                                            <option value="d05">B0</option>
+                                            <option value="d06">B1</option>
+                                            <option value="d07">B2</option>
+                                            <option value="d07">3ft x 4ft</option>
+                                            <option value="d08">6ft x 4 ft</option>
+                                            <option value="d09">12ft x 10ft</option>
+                                            <option value="d10">5' Ceramic Cup</option>
+                                            <option value="d11">5' Plastic Cup</option>
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Existing Rate</th>
+                                    <td width="100%">
+                                        <label>2350</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Rate</th>
+                                    <td width="100%">
+                                        <input type="text" style="padding: 2px 7px;" id="urate"
+                                               pattern = "[0-9]{1,5}" placeholder="Enter Rate" title="Enter a valid rate, upto 10,000" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;">
+                                        Update
+                                        Service
+                                    </button>
+                            </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="view_button" style="font-size: 15px;width: 100%;" onclick="return removeservice()">
+                                            Remove Service
+                                        </button>
+                                </tr>
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="print_works hidden" id="designerView">
+
+        <span class="heading">simpleDesigner</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="design_button active_design_tab" onclick="switchdesignTab('sizeView',this)">Sizes</button>
+            <button class="design_button" onclick="switchdesignTab('templateView',this)">Templates</button>
+            <button class="design_button" onclick="switchdesignTab('designView',this)">My Designs</button>
+        </div>
+
+        <div id="sizeView" class="viewClass show">
+
+            <div class="box">
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./images/pages/A4.png" width="150px" height="100px"><br>
+                        Banner
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./images/pages/A4.png" width="100px" height="150px"><br>
+                        A4
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./images/pages/A4.png" width="200px" height="110px"><br>
+                        A3
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./images/pages/A4.png" width="70px" height="110px"><br>
+                        A5
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./images/pages/A4.png" width="90px" height="150px"><br>
+                        Letter
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./images/pages/A4.png" width="130px" height="150px"><br>
+                        B0
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./images/pages/A4.png" width="100px" height="140px"><br>
+                        B1
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./images/pages/A4.png" width="180px" height="100px"><br>
+                        B2
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="templateView" class="viewClass hidden">
+
+            <div class="box">
+
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="designView" class="viewClass hidden">
+
+            <div class="box">
+
+                <div class="card">
+                    <a href="./code/index.php">
+                        <img src="./code/templates/1.png" width="150px" height="100px"><br>
+                        Sneaker Sale
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="print_works hidden" id="feedbackView">
+
+        <span class="heading">Customer Feedback</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="viewClass">
+            <div class="card_space">
+                <div class="entry">
+                    <P style="font-weight: bold; color: red; font-size: 35px"> 4.5</P>
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">of 5</p>
+
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Work ID:</p>
+                    <P style="font-weight: bolder; color: red">3352</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red">Freddy Jetty Johnson</P>
+                </div>
+                <div class="entry" style="display: block">
+                    <p>Feedback:</p>
+                    <P style="color: #000">The service was excellent. The paper quality is a bit thick but the printing
+                        quality is superfine.
+                        The prices are affordable and cheap when compared to the quality.</P>
+                </div>
+            </div>
+            <div class="card_space">
+                <div class="entry">
+                    <P style="font-weight: bold; color: red; font-size: 35px"> 4</P>
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">of 5</p>
+
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Work ID:</p>
+                    <P style="font-weight: bolder; color: red">3352</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red">Freddy Jetty Johnson</P>
+                </div>
+                <div class="entry" style="display: block">
+                    <p>Feedback:</p>
+                    <P style="color: #000">The service was excellent. The paper quality is a bit thick but the printing
+                        quality is superfine.
+                        The prices are affordable and cheap when compared to the quality.</P>
+                </div>
+            </div>
+            <div class="card_space">
+                <div class="entry">
+                    <P style="font-weight: bold; color: red; font-size: 35px"> 4.5</P>
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">of 5</p>
+
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Work ID:</p>
+                    <P style="font-weight: bolder; color: red">3352</P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Customer Name:</p>
+                    <P style="font-weight: bolder; color: red">Freddy Jetty Johnson</P>
+                </div>
+                <div class="entry" style="display: block">
+                    <p>Feedback:</p>
+                    <P style="color: #000">The service was excellent. The paper quality is a bit thick but the printing
+                        quality is superfine.
+                        The prices are affordable and cheap when compared to the quality.</P>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="print_works hidden" id="settingsView">
+
+        <span class="heading">Settings</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="settings_button active_settings_tab" onclick="switchsettingsTab('profileView',this)">User
+                Profile
+            </button>
+            <button class="settings_button" onclick="switchsettingsTab('updateprofileView',this)">Update Profile
+            </button>
+            <button class="settings_button" onclick="switchsettingsTab('changepwdView',this)">Change Password</button>
+        </div>
+
+        <div id="profileView" class="viewClass show">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">User Profile:</p>
+                    <div class="profile" style="margin-top: 20px;margin-left: 40px;">
+                        <img id="profile_pic" src="./images/home/avatar.png" style="display:  inline-block;border-radius: 50%;"
+                             width="150" height="150">
+                        <span>Suvi Laser Press</span>
+                        <p style="display: inline-block">&nbsp;Changanacherry</p><br><br>
+                        <input type="file" id="profile" accept="image/*">
+                        <button style="margin-left: -5px;margin-top: 10px;" class="view_button" onclick="return changeProfile()">Change Profile Picture
+                        </button>
+                    </div>
+                    <p style="margin-top: 15px;font-weight: bold;color: #0cb2cb;">Contact Details:</p>
+                    <table class="contact_table">
+                        <tr>
+                            <th style="text-align: left">E-mail</th>
+                            <td><label>suvilaserpress@gmail.com</label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">User Type</th>
+                            <td><label>Print Service Provider</label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Phone</th>
+                            <td><label>9645151693</label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Location</th>
+                            <td><label>9.02853,1.56827</label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Print Works Done</th>
+                            <td><label>1750</label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Overall Rating</th>
+                            <td><label>7.5/10</label></td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 15px;font-weight: bold;color: #0cb2cb;">Bank Details:</p>
+                    <table class="contact_table">
+                        <tr>
+                            <th style="text-align: left">Bank Name</th>
+                            <td><label>State Bank of India</label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Branch Name</th>
+                            <td><label>Changanacherry Main</label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">IFSC Code</th>
+                            <td><label>SBIN0070103</label></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Account No</th>
+                            <td><label>20262799399</label></td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="updateprofileView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">Update Profile:</p>
+                    <form name="updateprofilefrm" method="post" onsubmit="return updateprofile()"
+                          action="">
+                        <table class="contact_table">
+                            <tr>
+                                <th>Name</th>
+                                <td width="150%">
+                                    <input type="text" pattern="[a-zA-Z\s]{3,25}" style="padding: 2px 7px;" id="name"
+                                           title="Must contain 3 to 25 characters, and no numbers" value="Suvi Laser Press"
+                                           required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>
+                                    <input type="text" style="padding: 2px 7px;" id="city" value="Changanacherry" required>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>E-mail</th>
+                                <td>
+                                    <input type="email" style="padding: 2px 7px;" id="email"
+                                           title="Enter a valid e-mail" value="suvilaserpress@gmail.com">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>
+                                    <input type="text" id="phone" pattern="[\d]{10}" style="padding: 2px 7px;"
+                                           value="9645151693" title="Enter a valid Phone Number" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Location</th>
+                                <td>
+                                    <label>9.02853</label><label>, 1.56827</label><a href="">Select Location</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;">Update Profile
+                                    </button>
+                            </tr>
+                        </table>
+                    </form>
+
+                    <p style="font-weight: bold; color: #0cb2cb">Update Bank Details:</p>
+                    <form id="updatebankfrm" method="post" onsubmit="return updatebankdetails()"
+                          action="">
+                        <table class="contact_table">
+                            <tr>
+                                <th width="25%">Bank Name</th>
+                                <td width="70%">
+                                    <select id="bank_name">
+                                        <option value="b01">South Indian Bank</option>
+                                        <option value="b02" selected="selected">State Bank of India</option>
+                                        <option value="b03">Federal Bank</option>
+                                        <option value="b04">Indian Bank</option>
+                                        <option value="b05">Canara Bank</option>
+                                        <option value="b06">Catholic Syrian Bank</option>
+                                        <option value="b07">Punjab National Bank</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>IFSC Code</th>
+                                <td>
+                                    <input type="text" pattern="^[A-Za-z]{4}0[A-Z0-9a-z]{6}$" title="1. Exact length should be 11
+2. First 4 alphabets
+3. Fifth character is 0 (zero)
+4. Last six characters (usually numeric, but can be alphabetic)"
+                                           style="padding: 2px 7px;" id="ifsc_code" value="SBIN0070103" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Account No</th>
+                                <td>
+                                    <input type="text" pattern="[0-9]{11,16}"
+                                           title="Enter a valid Account No, must be between 11 - 16 digits"
+                                           style="padding: 2px 7px;" name="acc_no" value="20262799399">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;">Update Bank
+                                        Details
+                                    </button>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="changepwdView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">Update Profile:</p>
+                    <form id="changepwdfrm" method="post"
+                          onsubmit="return changepassword()">
+                        <table class="contact_table">
+                            <tr>
+                                <th>Current Password</th>
+                                <td width="100%">
+                                    <input type="password" id="current_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="Current Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>New Password</th>
+                                <td>
+                                    <input type="password" id="new_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="New Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Retype Passsword</th>
+                                <td>
+                                    <input type="password" id="retype_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="Retype New Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;">Change Password</button>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    var current_tab = document.querySelector('.inner_list');
+    var current_sub_tab = document.querySelector('.tab_button');
+    var current_design_tab = document.querySelector('.design_button');
+    var current_service_tab = document.querySelector('.service_button');
+    var current_settings_tab = document.querySelector('.settings_button');
+
+    function switchTo(view, elm) {
+        current_tab.classList.remove('active_icon');
+        document.getElementById(current_view).className = document.getElementById(current_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_view).className.replace("hidden", "show");
+        current_view = view;
+        current_tab = elm;
+        elm.classList.add('active_icon');
+    }
+
+    function switchTab(view, elm) {
+        current_sub_tab.classList.remove('active_sub_tab');
+        document.getElementById(current_sub_view).className = document.getElementById(current_sub_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_sub_view).className.replace("hidden", "show");
+        current_sub_view = view;
+        current_sub_tab = elm;
+        elm.classList.add('active_sub_tab');
+    }
+
+    function switchdesignTab(view, elm) {
+        current_design_tab.classList.remove('active_design_tab');
+        document.getElementById(current_design_view).className = document.getElementById(current_design_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_design_view).className.replace("hidden", "show");
+        current_design_view = view;
+        current_design_tab = elm;
+        elm.classList.add('active_design_tab');
+    }
+
+    function switchserviceTab(view, elm) {
+        current_service_tab.classList.remove('active_service_tab');
+        document.getElementById(current_service_view).className = document.getElementById(current_service_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_service_view).className.replace("hidden", "show");
+        current_service_view = view;
+        current_service_tab = elm;
+        elm.classList.add('active_service_tab');
+    }
+
+    function switchsettingsTab(view, elm) {
+        current_settings_tab.classList.remove('active_settings_tab');
+        document.getElementById(current_settings_view).className = document.getElementById(current_settings_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_settings_view).className.replace("hidden", "show");
+        current_settings_view = view;
+        current_settings_tab = elm;
+        elm.classList.add('active_settings_tab');
+    }
+
+    function showDetails(id) {
+        detail_id = 'detail_' + id;
+        view_id = 'view_' + id;
+        hide_id = 'hide_' + id;
+        document.getElementById(detail_id).className = document.getElementById(detail_id).className.replace("hidden", "show");
+        document.getElementById(hide_id).className = document.getElementById(hide_id).className.replace("hidden", "show");
+        document.getElementById(view_id).className = document.getElementById(view_id).className.replace("show", "hidden");
+    }
+
+    function hideDetails(id) {
+        detail_id = 'detail_' + id;
+        view_id = 'view_' + id;
+        hide_id = 'hide_' + id;
+        document.getElementById(detail_id).className = document.getElementById(detail_id).className.replace("show", "hidden");
+        document.getElementById(hide_id).className = document.getElementById(hide_id).className.replace("show", "hidden");
+        document.getElementById(view_id).className = document.getElementById(view_id).className.replace("hidden", "show");
+    }
+
+    function completejob(id){
+
+        var a = confirm('Mark the selected work as completed?')
+        if (a == true){
+
+            //Script for Completing Print Job and Sending Confirmation Message
+
+            var phoneno = '9645151693'
+            alert('A confirmation message has been be sent to ' + phoneno)
+
+        }
+
+    }
+
+    function addservice(){
+
+        var service = document.getElementById('service').value;
+        var document_size = document.getElementById('document_size').value;
+
+        if (service == 0){
+            alert('Select a Service!')
+            document.getElementById('service').focus()
+            return false
+        }
+        if (document_size == 0){
+            alert('Select a Document Size!')
+            document.getElementById('document_size').focus()
+            return false
+        }
+
+        //Script for adding Service
+
+        alert('Service Added Successfully!')
+
+    }
+
+    function updateservice(){
+
+        var service = document.getElementById('uservice').value;
+        var document_size = document.getElementById('udocument_size').value;
+
+        if (service == 0){
+            alert('Select a Service!')
+            document.getElementById('uservice').focus()
+            return false
+        }
+        if (document_size == 0){
+            alert('Select a Document Size!')
+            document.getElementById('udocument_size').focus()
+            return false
+        }
+
+        //Script for updating existing Service
+
+        alert('Service Updated Successfully!')
+
+    }
+
+    function removeservice(){
+
+        var service = document.getElementById('uservice').value;
+        var document_size = document.getElementById('udocument_size').value;
+
+        if (service == 0){
+            alert('Select a Service!')
+            document.getElementById('uservice').focus()
+            return false
+        }
+        if (document_size == 0){
+            alert('Select a Document Size!')
+            document.getElementById('udocument_size').focus()
+            return false
+        }
+
+        var a = confirm('Do you want to remove the selected Service?')
+
+        if (a == true){
+
+            //Script for removing existing Service
+
+            alert('Service Removed Successfully!')
+
+        }
+
+    }
+
+    function  changeProfile() {
+
+        //File Upload
+        var fileName = document.getElementById('profile').value;
+        if (fileName == "") {
+            alert("Select a File!")
+            document.getElementById('submitfile').focus()
+            return false
+        }
+        var allowed_extensions = new Array("jpg", "png", "jpeg", "bmp");
+        var file_extension = fileName.split('.').pop().toLowerCase(); // split function will split the filename by dot(.), and pop function will pop the last element from the array which will give you the extension as well. If there will be no extension then it will return the filename.
+
+        for (var i = 0; i <= allowed_extensions.length; i++) {
+            if (allowed_extensions[i] == file_extension) {
+
+                //Enter Script for Updating Profile Picture in Database
+                // document.getElementById('profile_pic').setAttribute("src",fileName)
+
+                alert('Profile Picture Changed Successfully')
+                document.getElementById('profile').value = "";
+                return true; // valid file extension
+            }
+        }
+
+        alert("Invalid file format!")
+        document.getElementById('profile').focus()
+        return false;
+
+    }
+
+    function updateprofile() {
+
+        //Script fot Updating Profile Details
+
+        alert('Profile Updated Successfully!')
+
+    }
+
+    function updatebankdetails() {
+
+        //Script fot Updating Bank Details
+
+        alert('Bank Details Updated Successfully!')
+
+    }
+
+    function changepassword(){
+        var current_psw = document.getElementById('current_psw').value;
+        var new_psw = document.getElementById('new_psw').value;
+        var retype_psw = document.getElementById('retype_psw').value;
+
+        //Script to check if current password is true
+        // alert('Error: Incorrect Current Password!')
+        // document.getElementById('current_psw').focus();
+        // return false
+
+
+        if (new_psw != retype_psw){
+            alert("Error: Passwords do not match!");
+            document.getElementById('retype_psw').focus();
+            return false;
+        }
+
+        //Password Change Script
+
+        alert('Password Changed Successfully');
+
+    }
+
+    function logout(){
+        var a = confirm('Do you want to logout?')
+        if (a == true){
+
+            //Logout Script
+
+            alert('Logged Out Successfully!')
+            window.location.href='./index.html'
+        }
+    }
+
+</script>
+
+</body>
+</html>

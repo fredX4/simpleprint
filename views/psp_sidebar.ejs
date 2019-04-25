@@ -1,0 +1,42 @@
+<div class="sidebar">
+
+    <div class="user_details" style=" text-align: center;">
+       
+        <img src="uploads/<%= (typeof user_img !="undefined" && user_img != 0 )? user_img : 'avatar.png' %>" class="avatar_pic">
+        <br>
+        <span><%= typeof name != 'undefined' ? name : '' %></span><br>
+        <span style="font-weight: lighter; font-size: 16px"><%= typeof user_address != 'undefined' ? user_address : 'Goto Settings to complete Profile' %></span>
+        <!--<p style="font-size: large; color: #f7e505">Overall Rating: 4.5/5</p>-->
+    </div>
+    <hr width="90%">
+
+
+    <button class="inner_list active_icon" onclick="switchTo('printView',this)">
+        <img src="images/png_new/print_works.png">Print Works
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('serviceView',this)">
+        <img src="images/png_new/services.png">My Services
+    </button>
+
+    <button class="inner_list" onclick="switchTo('designerView',this)">
+        <img src="images/png_new/designer.png">simpleDesigner
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('feedbackView',this)">
+        <img src="images/png_new/feedback.png">Customer Feedback
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('settingsView',this)">
+        <img src="images/png_new/settings.png">Settings
+    </button>
+
+
+    <button class="inner_list" onclick="return logout()">
+        <img src="images/png_new/logout.png">Logout
+    </button>
+    <hr width="90%">
+</div>

@@ -1,0 +1,2251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>simpleprint | Home</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="56x53" href="images/fav-icon/icon.png">
+
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .sidebar {
+            float: left;
+            display: block;
+            background: #272c32;
+            width: 20%;
+            height: 780px;
+            box-sizing: border-box;
+        }
+
+        .user_details {
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        .user_details > img {
+            border-radius: 50%;
+            border: solid 3px #FFFFFF;
+            margin-top: 40px;
+            margin-left: 85px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .user_details > span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .inner_list {
+            height: 40px;
+            background: #272c32;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .inner_list > img {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .main_space {
+            position: fixed;
+            margin-left: 20%;
+            width: 80%;
+            height: 100%;
+            background: #4b565c;
+            overflow-y: auto;
+            padding-bottom: 10px;
+        }
+
+        .print_works {
+            display: inline-block;
+            width: 100%;
+            height: auto;
+            background: #4b565c;
+            /*border-radius: 20px;*/
+            /*position: relative;*/
+            /*top: 20px;*/
+            /*left: 20px;*/
+            /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+        }
+
+        .heading {
+            padding-left: 35px;
+            padding-top: 30px;
+            font-weight: bolder;
+            font-size: 40px;
+            display: inline-block;
+            text-transform: none;
+            color: #FFFFFF;
+        }
+
+        .header_logo {
+            margin-right: 40px;
+            margin-top: 40px;
+            float: right;
+            display: inline-block
+        }
+
+        .active_icon {
+            background: #4b565c;
+        }
+
+        .active_sub_tab {
+            /*background: #db9630;*/
+            border: 2px solid #db9630;
+        }
+
+        .active_design_tab {
+            /*background: #db9630;*/
+            border: 2px solid #db3728;
+        }
+
+        .active_service_tab {
+            /*background: #db9630;*/
+            border: 2px solid #16cb44;
+        }
+
+        .active_settings_tab {
+            /*background: #db9630;*/
+            border: 2px solid #0cb2cb;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .card_space {
+            background: #ffffff;
+            width: 97%;
+            height: auto;
+            margin-bottom: 20px;
+            /*margin-left: 32px;*/
+            /*margin-top: 15px;*/
+            padding-bottom: 18px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .viewClass {
+            /*background: red;*/
+            margin-left: 32px;
+            margin-top: 15px;
+        }
+
+        .tab {
+            display: inline-block;
+            margin-left: 30px;
+            margin-top: -8px;
+        }
+
+        .tab_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .tab_button:hover {
+            background: #db9630;
+            transition: all 0.2s ease;
+        }
+
+        .design_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .design_button:hover {
+            background: #db3728;
+            transition: all 0.2s ease;
+        }
+
+        .service_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .service_button:hover {
+            background: #16cb44;
+            transition: all 0.2s ease;
+        }
+
+        .settings_button {
+            padding: 8px 15px;
+            width: auto;
+            color: #fff;
+            display: inline-block;
+            background: #4b565c;
+        }
+
+        .settings_button:hover {
+            background: #0cb2cb;
+            transition: all 0.2s ease;
+        }
+
+        .entry {
+            display: inline-block;
+            font-size: 20px;
+            padding: 0px 15px;
+            margin-top: 18px;
+            /*font-weight: bold;*/
+        }
+
+        .view_button {
+            font-size: 12px;
+            padding: 8px 15px;
+            width: auto;
+            color: #db1340;
+            display: inline-block;
+            border: 2px solid #db1340;
+            background: #FFFFFF;
+            margin-right: 15px;
+            margin-top: 8px;
+        }
+
+        .view_button:hover {
+            background: #db1340;
+            color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .detailed_entry {
+            /*background: #272c32;*/
+            width: 97%;
+            height: auto;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-left: 15px;
+        }
+
+        td,
+        th {
+            padding: 4px 55px;
+            font-size: 18px;
+        }
+
+        .service_table th,
+        .service_table td {
+            padding: 4px 104px;
+        }
+
+        .addservice th,
+        addservice td {
+            width: 25%;
+            padding: 3px 30px;
+        }
+
+        .box {
+            /*background: #00A0D1;*/
+            width: 100%;
+            margin-top: -15px;
+            margin-left: -3px;
+        }
+
+        .card {
+            display: inline-block;
+            width: 150px;
+            height: 200px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            /*background: #2eff5b;*/
+            margin: 10px;
+            color: #fff;
+        }
+
+        .card a:active,
+        a:visited {
+            color: #fff !important;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            color: #db3728 !important;
+            transition: all 0.3s ease;
+        }
+
+        .card img {
+            display: inline-block !important;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border: 1px solid #fff;
+            margin-bottom: 10px;
+            /*align-content: center;*/
+        }
+
+        select {
+            width: 100% !important;
+            height: 35px;
+            margin-bottom: 3px
+        }
+
+        .profile span {
+            font-size: 35px;
+            font-weight: bold;
+            color: #0f0f0f;
+            margin-left: 30px;
+        }
+
+        .contact_table th {
+            font-weight: normal;
+        }
+
+        .details_table a {
+            color: #00A0D1 !important;
+        }
+
+        .contact_table a {
+            color: #00A0D1 !important;
+            padding-left: 5px;
+        }
+
+        .print_button {
+            font-size: 16px;
+            width: 100%;
+            padding: 8px 0px;
+            background: #ff2b2b;
+            margin-top: 5px;
+        }
+
+        /* The Modal (background) */
+
+        .smodal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 10%;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+
+        .smodal-content {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0px 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 5px solid #e52525;
+            width: 30%;
+            /*height: 400px;*/
+        }
+
+        /* The Close Button */
+
+        .sclose {
+            color: #000;
+            float: right;
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: -20px;
+        }
+
+        .sclose:hover,
+        .sclose:focus {
+            color: #e04f5d;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .rating {
+            float: left;
+        }
+
+        /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+           follow these rules. Every browser that supports :checked also supports :not(), so
+           it doesn’t make the test unnecessarily selective */
+
+        .rating:not(:checked) > input {
+            position: absolute;
+            top: -9999px;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .rating:not(:checked) > label {
+            float: right;
+            margin-right: 22px;
+            width: 1em;
+            padding: 0 .1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 300%;
+            line-height: 1.2;
+            color: #ddd;
+            text-shadow: 1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating:not(:checked) > label:before {
+            content: '★';
+        }
+
+        .rating > input:checked ~ label {
+            color: #f70;
+            text-shadow: 1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating:not(:checked) > label:hover,
+        .rating:not(:checked) > label:hover ~ label {
+            color: gold;
+            text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating > input:checked + label:hover,
+        .rating > input:checked + label:hover ~ label,
+        .rating > input:checked ~ label:hover,
+        .rating > input:checked ~ label:hover ~ label,
+        .rating > label:hover ~ input:checked ~ label {
+            color: #ea0;
+            text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating > label:active {
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+
+        fieldset {
+            min-width: 0;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            text-align: center;
+        }
+
+        legend {
+            display: block;
+            /* width: 100%; */
+            /* padding: 0; */
+            /* margin-bottom: 5px; */
+            margin-left: 95px;
+            font-size: 29px;
+            /* line-height: inherit; */
+            color: #333;
+        }
+
+        #map {
+            margin-top: 5px;
+            /*background: #00A0D1;*/
+            width: 93.5%;
+            height: 400px;
+            margin-left: 32px;;
+        }
+
+        #user_details_table {
+            width: 90%;
+        }
+    </style>
+
+</head>
+
+<body>
+<script>
+    var current_view = 'printView';
+    var current_sub_view = 'pendingView';
+    var current_design_view = 'sizeView';
+    var current_service_view = 'myserviceView';
+    var current_settings_view = 'profileView';
+</script>
+<div class="sidebar">
+
+    <div class="user_details" style=" text-align: center;">
+        <img src="uploads/<%= (typeof user_img !="undefined" && user_img != 0 )? user_img : 'avatar.png' %>" class="avatar_pic">
+        <br>
+        <span><%= typeof name != 'undefined' ? name : '' %></span>
+        <br>
+        <span style="font-weight: lighter; font-size: 16px"><%= typeof user_address != 'undefined' ? user_address : 'Goto Settings to complete Profile' %></span>
+        <button class="print_button" onclick="switchTo('printnowView',this)">Print Now</button>
+    </div>
+    <hr width="90%">
+
+
+    <button class="inner_list active_icon" onclick="switchTo('printView',this)">
+        <img src="images/png_new/print_works.png">Print Jobs
+    </button>
+
+    <button class="inner_list" onclick="switchTo('designerView',this)">
+        <img src="images/png_new/designer.png">simpleDesigner
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('feedbackView',this)">
+        <img src="images/png_new/feedback.png">My Feedbacks
+    </button>
+
+
+    <button class="inner_list" onclick="switchTo('settingsView',this)">
+        <img src="images/png_new/settings.png">Settings
+    </button>
+
+
+    <button class="inner_list" onclick="return logout()">
+        <img src="images/png_new/logout.png">Logout
+    </button>
+    <hr width="90%">
+</div>
+
+<div class="main_space">
+
+    <div class="print_works hidden" id="printnowView">
+
+        <span class="heading">Print Now</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="viewClass show" id='addfileView'>
+            <div class="card_space">
+                <p style="font-size: 20px; color: #ff2b2b; font-weight: bold; margin-left: 30px;padding-top: 20px;">
+                    Add File Details</p>
+                <!--                    <form name="addfilefrm" method="post" onsubmit="return addFile()">-->
+                <table style="margin-top: 5px" class="contact_table">
+
+                    <tr>
+                        <th>Type of Service</th>
+                        <td width="150%">
+                            <select id="service">
+                                <option value="0">Select a Service</option>
+                                <!--<option value="s01">Color Laser Print</option>-->
+                                <!--<option value="s02">Black and White Laser Print</option>-->
+                                <!--<option value="s03">Matte Lamination</option>-->
+                                <!--<option value="s04">Glossy Lamination</option>-->
+                                <!--<option value="s05">Cup Printing</option>-->
+                                <!--<option value="s06">Flex Printing</option>-->
+                                <!--<option value="s07">Vinyl Printing</option>-->
+                                <!--</select>-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Document Size</th>
+                        <td>
+                            <select id="document_size">
+                                <option value="0">Select Service</option>
+
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>File</th>
+                        <td>
+                            <input type="file" id="submitfile" style="padding: 2px 0px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Copies</th>
+                        <td>
+                            <input type="text" style="padding: 2px 7px;" id="copies" value="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button class="view_button" style="font-size: 15px;width: 100%;" onclick="addFile()">Add
+                                File
+                            </button>
+                    </tr>
+                </table>
+                <!--                    </form>-->
+
+                <script>
+                    function addFile() {
+
+                        var service = document.getElementById('service').value;
+                        var document_size = document.getElementById('document_size').value;
+                        var copies = document.getElementById('copies').value.trim();
+
+                        if (service == 0) {
+                            alert('Select a Service!')
+                            document.getElementById('service').focus()
+                            return false
+                        }
+                        if (document_size == 0) {
+                            alert('Select a Document Size!')
+                            document.getElementById('document_size').focus()
+                            return false
+                        }
+                        if (copies == "") {
+                            alert("Enter number of copies!")
+                            document.getElementById('copies').focus()
+                            return false
+                        }
+                        if (isNaN(copies) || (copies.length > 6)) {
+                            alert("Enter valid number of copies!")
+                            document.getElementById('copies').focus()
+                            return false
+                        }
+
+                        //File Upload
+                        var fileName = document.getElementById('submitfile').value;
+                        if (fileName == "") {
+                            alert("Select a File!")
+                            document.getElementById('submitfile').focus()
+                            return false
+                        }
+                        var allowed_extensions = new Array("jpg", "png", "tiff", "psd", "raw", "cdr", "ai", "eps", "pdf", "jpeg", "bmp");
+                        var file_extension = fileName.split('.').pop().toLowerCase(); // split function will split the filename by dot(.), and pop function will pop the last element from the array which will give you the extension as well. If there will be no extension then it will return the filename.
+
+                        console.log(allowed_extensions.indexOf(file_extension))
+                        for (var i = 0; i <= allowed_extensions.length; i++) {
+                            if (allowed_extensions[i] == file_extension) {
+                                //Enter Script for entering details in the database
+
+                                var file = document.getElementById('submitfile').files[0];
+                                uploadFile(file, function (err, img_url) {
+
+                                    console.log(img_url)
+                                    if (err) {
+
+                                        alert('Error uploading image!')
+
+                                    } else {
+
+                                        var table = document.getElementById('user_details_table')
+                                        var tbody = table.getElementsByTagName('tbody')
+
+                                        var tr = document.createElement("tr");
+
+                                        var ser_td = document.createElement("td")
+                                        ser_td.textContent = document.getElementById('service').value;
+
+                                        var siz_td = document.createElement("td")
+                                        siz_td.textContent = document.getElementById('document_size').value;
+
+                                        var fil_td = document.createElement("td")
+                                        fil_td.innerHTML = (document.getElementById('submitfile').value).split('\\')[2];
+
+                                        var cop_td = document.createElement("td")
+                                        cop_td.textContent = document.getElementById('copies').value;
+
+                                        var temp_id = Date.now()
+                                        var rem_td = document.createElement("td")
+
+                                        rem_td.innerHTML = '<a href="#" onclick="remove(' + temp_id + ')">remove</a>';
+
+
+                                        tr.dataset.id = temp_id
+                                        tr.appendChild(ser_td);
+                                        tr.appendChild(siz_td);
+                                        tr.appendChild(fil_td);
+                                        tr.appendChild(cop_td);
+                                        tr.appendChild(rem_td);
+
+                                        table.appendChild(tr);
+
+                                        active_services.push({
+                                            service_id: document.getElementById('document_size').value,
+                                            file_url: img_url,
+                                            copies: document.getElementById('copies').value,
+                                            temp_id: temp_id
+                                        })
+
+                                        document.getElementById('submitfile').value = ''
+
+
+                                    }
+
+                                });
+
+
+                                return false;
+                                break;// valid file extension
+                            } else {
+                                // alert("Invalid file format!")
+                                // document.getElementById('submitfile').focus()
+                            }
+                        }
+
+
+                    }
+                </script>
+
+
+                <div style="margin-left:80px; padding-bottom: 50px; width: auto" class="detailed_entry">
+                    <p style="font-weight: bold">Print Job Details:</p>
+                    <table class="details_table" border="1" id="user_details_table">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+                            <th>Remove</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button class="view_button" style="font-size: 15px;float: right;width: 19.5%;margin-right: 75px; "
+                            onclick="return validate_details()">Next
+                    </button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <script>
+            var psp_data = []
+            var active_psp = {}
+
+            function validate_details() {
+
+                //Include Script for validation if atleast one Print Job isn't present
+
+                qwest.post('/user/find_psp', {
+                    data: active_services,
+                    user_lat: user_lat,
+                    user_lng: user_lng
+                })
+                    .then(function (xhr, json) {
+
+                        if (json.error == 0) {
+
+                            showNext('selectpspView', 'addfileView');
+
+
+                            goMap();
+
+
+                            var image = 'images/logo/map.png';
+                            markers = [];
+                            psp_data = json.result
+
+                            for (var i = 0, len = json.result.length; i < len; i++) {
+                                markers[i] = new google.maps.Marker({
+                                    position: {
+                                        lat: parseFloat(json.result[i].lat),
+                                        lng: parseFloat(json.result[i].lng)
+                                    },
+                                    map: map,
+                                    icon: image,
+                                    title: json.result[i].name,
+                                    animation: google.maps.Animation.DROP
+                                });
+
+                                var tooltip = new google.maps.InfoWindow({
+                                    content: '<h6>' + json.result[i].name + '</h6> <p>' + json.result[i].user_address + '</p> <p> Total Rate:' + json.result[i].rate + '</p>'
+                                })
+
+
+                                tooltip.open(map, markers[i]);
+                                listenMarker(markers[i], tooltip, i)
+
+                            }
+                        }
+
+
+                    })
+            }
+
+
+            function listenMarker(marker, tooltip, i) {
+                // so marker is associated with the closure created for the listenMarker function call
+                google.maps.event.addListener(marker, 'click', function () {
+                    tooltip.open(map, marker);
+                    active_psp = psp_data[i]
+                    document.getElementById('selected_psp_name').innerHTML = psp_data[i].name
+                    document.getElementById('selected_psp_rate').innerHTML = psp_data[i].rate
+                    document.getElementById('selected_psp_status').innerHTML = 'Open'
+
+
+                });
+            }
+        </script>
+
+        <div class="viewClass hidden" id='selectpspView'>
+            <div class="card_space" style="padding-bottom: 78px">
+                <p style="font-size: 20px; color: #ff2b2b; font-weight: bold; margin-left: 30px;padding-top: 20px;">
+                    Select PSP</p>
+
+                <div class="map-area">
+                    <div id="map"></div>
+                </div>
+                <div class="entry" style="margin-left: 18%">
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">Selected PSP</p>
+                    <P style="font-weight: bold; color: red; font-size: 20px" id="selected_psp_name"></P>
+
+                </div>
+                <div class="entry" style="border-left: 2px solid #333333">
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">Status</p>
+                    <P style="font-weight: bold; color: red; font-size: 20px" id="selected_psp_status"></P>
+                </div>
+
+                <div class="entry" style="border-left: 2px solid #333333">
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">Total Job Cost</p>
+                    <P style="font-weight: bold; color: red; font-size: 20px" id="selected_psp_rate"></P>
+                </div>
+
+                <div class="entry" style="border-left: 2px solid #333333;display:none;">
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">Overall Rating</p>
+                    <P style="font-weight: bold; color: red; font-size: 20px">4.5/5</P>
+                </div>
+
+                <br>
+                <button class="view_button" style="font-size: 15px;float: left;width: 15%;margin-left: 30px;"
+                        onclick="showPrevious('addfileView','selectpspView')">Previous
+                </button>
+
+                <button class="view_button" style="font-size: 15px;float: right; width: 15%;margin-right: 30px;"
+                        onclick="addJobAndPay()">
+                    Pay Online
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="print_works show" id="printView">
+
+        <span class="heading">Print Jobs</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="tab_button active_sub_tab" onclick="switchTab('pendingView',this)">Active</button>
+            <button class="tab_button" onclick="switchTab('completedView',this)">Completed</button>
+            <button class="tab_button" onclick="switchTab('cancelledView',this)">Cancelled</button>
+        </div>
+
+        <div id="pendingView" class="viewClass show">
+
+            <% if(typeof jobs != 'undefined') {%>
+            <% jobs.forEach(function (job) {
+
+
+                if(job.status != 1)
+                {
+
+                    return;
+                }
+
+            %>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red"> <%= job.print_request_id %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> <%= new Date(job.time).toDateString() %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>PSP Name:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.name %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>PSP Phone:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.phone %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.amount %></P>
+                </div>
+
+
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_<%= job.print_request_id %>'
+                            onclick="showDetails('<%= job.print_request_id %>')">View Details
+                    </button>
+                    <button class="view_button hidden" id='hide_<%= job.print_request_id %>'
+                            onclick="hideDetails('<%= job.print_request_id %>')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_<%= job.print_request_id %>'>
+                    <p>Print Job Details:</p>
+                    <table class="details_table" border="1">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id ="">
+
+                        <%  print_details = JSON.parse(job.print_details)
+                        print_details.forEach(function (print) { %>
+                        <td data-service_id=<%= print.service_id %>></td>
+                        <td data-size_id=<%= print.service_id %>></td>
+                        <td><a download href="/uploads/<%= print.file_url %>"><%= print.file_url %></a></td>
+                        <td><%= print.copies %></td>
+                        <% }) %>
+                        </tbody>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold"><%= job.payment_id %></span>
+                    <!--<form method="post" action="" id="cancel_">-->
+                        <button id="can_<%=job.print_request_id %>" class="view_button" onclick="cancelDetails(<%=job.print_request_id %>)" style="float: right">
+                            Cancel Job
+                        </button>
+                    <!--</form>-->
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold"><%= job.payment_type %></span>
+
+
+                </div>
+
+
+            </div>
+
+            <% }) } %>
+
+        </div>
+
+        <div id="completedView" class="viewClass hidden">
+
+            <!-- The Modal -->
+            <div id='feedbackmodal' class="smodal">
+                <!-- Modal content -->
+                <div class="smodal-content">
+                    <span class="sclose" id="modalclose">&times;</span>
+                    <br>
+                    <!--<form name="feedbackform" method="post" onsubmit="return ratejob()">-->
+                        <fieldset class="rating">
+                            <legend><b>Rate this Print Job:</b></legend>
+                            <input type="radio" id="star5" name="rating" value="5"/>
+                            <label for="star5" title="Amazing">5 stars
+                            </label>
+                            <input type="radio" id="star4" name="rating" value="4"/>
+                            <label for="star4" title="Very good">4 stars
+                            </label>
+                            <input type="radio" id="star3" name="rating" value="3" checked/>
+                            <label for="star3" title="Average">3 stars
+                            </label>
+                            <input type="radio" id="star2" name="rating" value="2"/>
+                            <label for="star2" title="Not Good">2 stars
+                            </label>
+                            <input type="radio" id="star1" name="rating" value="1"/>
+                            <label for="star1" title="Terrible">1 star
+                            </label>
+                        </fieldset>
+                        <p><b>Feedback:</b></p>
+                        <textarea id="feedback" style="width: 100%;height: 90px">Good Job.</textarea>
+                        <button style="width: 100%" class="view_button" onclick="ratejob()">Submit Feedback
+                        </button>
+                    <!--</form>-->
+
+                </div>
+            </div>
+
+            <% if(typeof jobs != 'undefined') {%>
+            <% jobs.forEach(function (job) {
+
+                if(job.status != 2)
+                {
+
+                    return;
+                }
+
+            %>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red"> <%= job.print_request_id %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> <%= new Date(job.time).toDateString() %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>PSP Name:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.name %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>PSP Phone:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.phone %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.amount %></P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_<%= job.print_request_id %>'
+                            onclick="showDetails('<%= job.print_request_id %>')">View Details
+                    </button>
+                    <button class="view_button hidden" id='hide_<%= job.print_request_id %>'
+                            onclick="hideDetails('<%= job.print_request_id %>')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_<%= job.print_request_id %>'>
+                    <p>Print Job Details:</p>
+                    <%print_details = JSON.parse(job.print_details) %>
+                    <table class="details_table" border="1">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id ="">
+
+                        <% print_details.forEach(function (print) { %>
+                        <td data-service_id=<%= print.service_id %>></td>
+                        <td data-size_id=<%= print.service_id %>></td>
+                        <td><a download href="/uploads/<%= print.file_url %>"><%= print.file_url %></a></td>
+                        <td><%= print.copies %></td>
+                        <% }) %>
+                        </tbody>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold"><%= job.payment_id %></span>
+                    <%  %>
+                    <button class="view_button" style="float: right" onclick="feedback(<%= job.print_request_id + ',' + job.psp_id %>,)">Leave Feedback
+                    </button>
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold"><%= job.payment_type %></span>
+                </div>
+            </div>
+            <% }) } %>
+        </div>
+
+        <!--     Cancelled  -->
+
+        <div id="cancelledView" class="viewClass hidden">
+            <% if(typeof jobs != 'undefined') {%>
+            <% jobs.forEach(function (job) {
+
+                if(job.status != 3)
+                {
+
+                    return;
+                }
+
+            %>
+
+            <div class="card_space">
+                <div class="entry">
+                    <p>ID:</p>
+                    <P style="font-weight: bold; color: red"> <%= job.print_request_id %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Date:</p>
+                    <P style="font-weight: bolder; color: red"> <%= new Date(job.time).toDateString() %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>PSP Name:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.name %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>PSP Phone:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.phone %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Total:</p>
+                    <P style="font-weight: bolder; color: red"><%= job.amount %></P>
+                </div>
+                <div class="entry" style="float: right">
+                    <button class="view_button show" id='view_<%= job.print_request_id %>' onclick="showDetails('<%= job.print_request_id %>')">View Details</button>
+                    <button class="view_button hidden" id='hide_<%= job.print_request_id %>' onclick="hideDetails('<%= job.print_request_id %>')">Hide Details
+                    </button>
+                </div>
+
+                <div class="detailed_entry hidden" id='detail_<%= job.print_request_id %>'>
+                    <p>Print Job Details:</p>
+                    <table class="details_table" border="1">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Size</th>
+                            <th>File</th>
+                            <th>Copies</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id ="">
+
+                        <% print_details.forEach(function (print) { %>
+                        <td data-service_id=<%= print.service_id %>></td>
+                        <td data-size_id=<%= print.service_id %>></td>
+                        <td><a download href="/uploads/<%= print.file_url %>"><%= print.file_url %></a></td>
+                        <td><%= print.copies %></td>
+                        <% }) %>
+                        </tbody>
+                    </table>
+                    <span>Transaction ID:</span>
+                    <span style="font-weight: bold"><%= job.payment_id %></span>
+
+                    <br>
+                    <span>Payment Mode:</span>
+                    <span style="font-weight: bold"><%= job.payment_type %></span>
+
+
+                </div>
+
+
+            </div>
+            <% }) } %>
+
+        </div>
+
+
+    </div>
+
+    <div class="print_works hidden" id="serviceView">
+
+        <span class="heading">My Services</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="service_button active_service_tab" onclick="switchserviceTab('myserviceView',this)">My
+                Services
+            </button>
+            <button class="service_button" onclick="switchserviceTab('addserviceView',this)">Add New Service</button>
+            <button class="service_button" onclick="switchserviceTab('updateView',this)">Update Service</button>
+        </div>
+
+        <div id="myserviceView" class="viewClass show">
+            <div class="card_space">
+                <div class="entry">
+                    <p>List of Available Services:</p>
+                    <div class="service_table">
+                        <table border="1">
+                            <tr>
+                                <th>Type of Service</th>
+                                <th>Document Size</th>
+                                <th>Rate</th>
+                            </tr>
+                            <tr>
+                                <td>Color Laser Print</td>
+                                <td>A4</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Matte Lamination</td>
+                                <td>A3</td>
+                                <td>500</td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="updateView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #16cb44">Update Service:</p>
+                    <div class="addservice">
+                        <form name="updateservicefrm" method="post" onsubmit="alert('Service updated successfully!')"
+                              action="">
+                            <table>
+                                <tr>
+                                    <th style="text-align: left">Name of Service</th>
+                                    <td>
+                                        <select name="service_list">
+                                            <option value="0">Select a Service</option>
+                                            <option value="s01">Color Laser Print</option>
+                                            <option value="s02">Black and White Laser Print</option>
+                                            <option value="s03">Matte Lamination</option>
+                                            <option value="s04">Glossy Lamination</option>
+                                            <option value="s05">Cup Printing</option>
+                                            <option value="s06">Flex Printing</option>
+                                            <option value="s07">Vinyl Printing</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Document Size</th>
+                                    <td>
+                                        <select name="document_size">
+                                            <option value="0">Select a Size</option>
+                                            <option value="d01">A3</option>
+                                            <option value="d02">A4</option>
+                                            <option value="d03">A5</option>
+                                            <option value="d04">Letter</option>
+                                            <option value="d05">B0</option>
+                                            <option value="d06">B1</option>
+                                            <option value="d07">B2</option>
+                                            <option value="d07">3ft x 4ft</option>
+                                            <option value="d08">6ft x 4 ft</option>
+                                            <option value="d09">12ft x 10ft</option>
+                                            <option value="d10">5' Ceramic Cup</option>
+                                            <option value="d11">5' Plastic Cup</option>
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Rate</th>
+                                    <td width="100%">
+                                        <input type="text" style="padding: 2px 7px;" name="rate"
+                                               placeholder="Enter Rate">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="view_button" style="font-size: 15px;width: 100%;" onclick="">
+                                            Update Service
+                                        </button>
+                                </tr>
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="print_works hidden" id="designerView">
+
+        <span class="heading">simpleDesigner</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="design_button active_design_tab" onclick="switchdesignTab('sizeView',this)">Sizes</button>
+            <button class="design_button" onclick="switchdesignTab('templateView',this)">Templates</button>
+            <button class="design_button" onclick="switchdesignTab('designView',this)">My Designs</button>
+        </div>
+
+        <div id="sizeView" class="viewClass show">
+
+            <div class="box">
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="150px" height="100px">
+                        <br> Banner
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="100px" height="150px">
+                        <br> A4
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="200px" height="110px">
+                        <br> A3
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="70px" height="110px">
+                        <br> A5
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="90px" height="150px">
+                        <br> Letter
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="130px" height="150px">
+                        <br> B0
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="100px" height="140px">
+                        <br> B1
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf">
+                        <img src="./images/pages/A4.png" width="180px" height="100px">
+                        <br> B2
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="templateView" class="viewClass hidden">
+
+            <div class="box">
+                <% if (typeof templates != 'undefined') { %>
+                <% templates.forEach(function (template) { %>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf/?id=<%= (template.template_id) ? template.template_id : '' %>"
+                       target="_blank">
+                        <img src="<%= (template.template_thumbnail) ? template.template_thumbnail : '' %>" width="150px"
+                             height="100px">
+                        <br> <%= (template.template_name) ? template.template_name : 'Template' %>
+                    </a>
+                </div>
+
+                <% }) %>
+                <% } %>
+            </div>
+
+        </div>
+
+        <div id="designView" class="viewClass hidden">
+
+            <div class="box">
+                <% if (typeof templates != 'undefined') { %>
+                <% templates.forEach(function (template) { %>
+                <div class="card">
+                    <a href="https://designer.simpleprint.cf/?id=<%= (template.template_id) ? template.template_id : '' %>"
+                       target="_blank">
+                        <img src="<%= (template.template_thumbnail) ? template.template_thumbnail : '' %>" width="150px"
+                             height="100px">
+                        <br> <%= (template.template_name) ? template.template_name : 'Template' %>
+                    </a>
+                </div>
+
+                <% }) %>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="print_works hidden" id="feedbackView">
+
+        <span class="heading">My Feedbacks</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="viewClass">
+            <% feedback.forEach(function (feed) { %>
+            <div class="card_space">
+                <div class="entry">
+                    <P style="font-weight: bold; color: red; font-size: 35px"><%= feed.rating %></P>
+                    <p style="font-weight: bold; color: #000; font-size: 20px; margin-top: 6px">of 5</p>
+
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>Job ID:</p>
+                    <P style="font-weight: bolder; color: red"><%= feed.print_request_id %></P>
+                </div>
+                <div class="entry" style="border-left: 2px solid #4b565c">
+                    <p>PSP ID:</p>
+                    <P style="font-weight: bolder; color: red"><%= feed.psp_id %></P>
+                </div>
+                <div class="entry" style="display: block">
+                    <p>Feedback:</p>
+                    <P style="color: #000"><%= feed.review %></P>
+                </div>
+            </div>
+            <% }) %>
+
+        </div>
+
+
+    </div>
+
+    <div class="print_works hidden" id="settingsView">
+
+        <span class="heading">Settings</span>
+        <a class="header_logo" href=""><img src="images/logo/logo.png"></a>
+        <hr width="94%" style="margin-top:10px; border: 0.5px solid #FFFFFF;">
+
+        <div class="tab">
+            <button class="settings_button active_settings_tab" onclick="switchsettingsTab('profileView',this)">User
+                Profile
+            </button>
+            <button class="settings_button" onclick="switchsettingsTab('updateprofileView',this)">Update Profile
+            </button>
+            <button class="settings_button" onclick="switchsettingsTab('changepwdView',this)">Change Password</button>
+        </div>
+
+        <div id="profileView" class="viewClass show">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">User Profile:</p>
+                    <div class="profile" style="margin-top: 20px;margin-left: 40px;">
+                        <img id="profile_pic" src="uploads/<%= (typeof user_img !="undefined" && user_img != 0 ) ? user_img : 'avatar.png' %>" style="display:  inline-block;border-radius: 50%;"
+                             width="150" height="150" class="avatar_pic">
+                        <span><%= typeof name != 'undefined' ? name : '' %></span>
+                        <p style="display: inline-block">&nbsp;
+                            <%= typeof user_address != 'undefined' ? user_address : '' %>
+                        </p>
+                        <br>
+                        <br>
+                        <input type="file" id="profile" accept="image/*">
+                        <button style="margin-left: -1px;margin-top: 10px;" class="view_button"
+                                onclick="return changeProfile()">Change Profile Picture
+                        </button>
+                    </div>
+                    <p style="margin-top: 15px;font-weight: bold;color: #0cb2cb;">Contact Details:</p>
+                    <table class="contact_table">
+                        <tr>
+                            <th style="text-align: left">E-mail</th>
+                            <td>
+                                <label>
+                                    <%= typeof email != 'undefined' ? email : '' %>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">User Type</th>
+                            <td>
+                                <label>Customer</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">Phone</th>
+                            <td>
+                                <label>
+                                    <%= typeof phone != 'undefined' ? phone : '' %>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left">City</th>
+                            <td>
+                                <label>
+                                    <%= typeof user_address != 'undefined' ? user_address : '' %>
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="updateprofileView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">Update Profile:</p>
+                    <!--<form name="updateprofilefrm" method="post" onsubmit="return updateprofile()">-->
+                        <table class="contact_table">
+                            <tr>
+                                <th>Name</th>
+                                <td width="150%">
+                                    <input type="text" pattern="[a-zA-Z\s]{3,25}" style="padding: 2px 7px;" name="name"
+                                           title="Must contain 3 to 25 characters, and no numbers"
+                                           value="<%= typeof name != 'undefined' ? name : '' %>" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>
+                                    <input type="text" style="padding: 2px 7px;" id="city"
+                                           value="<%= typeof user_address != 'undefined' ? user_address : '' %>"
+                                           autocomplete=off required>
+                                    <input type="hidden" name="shop_lon"
+                                           value="<%= typeof lng != 'undefined' ? lng : '' %>">
+                                    <input type="hidden" name="shop_lat"
+                                           value="<%= typeof lat != 'undefined' ? lat : '' %>">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>
+                                    <input type="text" name="phone" pattern="[\d]{10}" style="padding: 2px 7px;"
+                                           value="<%= typeof phone != 'undefined' ? phone : '' %>"
+                                           title="Enter a valid Phone Number" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;" onclick="updateprofile()">Update Profile
+                                    </button>
+                            </tr>
+                        </table>
+                    <!--</form>-->
+                    <script>
+                        function updateprofile() {
+                            var name = document.getElementsByName('name')[0].value
+                            var city = document.getElementById('city').value
+                            var phone = document.getElementsByName('phone')[0].value
+
+                            if(name == ''){
+                                alert('Error: Enter a valid Name!')
+                                document.getElementsByName('name')[0].focus()
+                            }
+                            else if(name.length < 3 || name.length > 25){
+                                alert('Name should be between 3 to 25 characters!')
+                                document.getElementsByName('name')[0].focus()
+                            }
+                            else if(!isNaN(name)){
+                                alert('Error: Name cannot contain numbers!')
+                                document.getElementsByName('name')[0].focus()
+                            }
+                            else if(city == ''){
+                                alert('Error: Enter a valid City!')
+                                document.getElementById('city').focus()
+                            }
+                            else if(phone == ''){
+                                alert('Error: Enter a valid Phone!')
+                                document.getElementsByName('phone')[0].focus()
+                            }
+
+                            else if(isNaN(phone)){
+                                alert('Error: Phone cannot contain characters!')
+                                document.getElementsByName('phone')[0].focus()
+                            }
+                            else if(phone.length != 10 ){
+                                alert('Phone should contain 10 numbers!')
+                                document.getElementsByName('phone')[0].focus()
+                            }
+                            else {
+
+                                qwest.post('/update_profile', {
+                                    name: document.getElementsByName('name')[0].value,
+                                    city: document.getElementById('city').value,
+                                    phone: document.getElementsByName('phone')[0].value,
+                                    lat: document.getElementsByName('shop_lat')[0].value,
+                                    lng: document.getElementsByName('shop_lon')[0].value
+                                })
+                                    .then(function (xhr, json) {
+
+                                        if (json.error == 0 || json.success == 1) {
+                                            alert('Profile Updated Successfully!')
+                                            window.location = '/dashboard'
+                                        }
+                                        else {
+                                            alert("Already Existing Phone Number!");
+                                        }
+                                    })
+                            }
+
+                        }
+
+                    </script>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="changepwdView" class="viewClass hidden">
+
+            <div class="card_space">
+                <div class="entry">
+                    <p style="font-weight: bold; color: #0cb2cb">Change Password:</p>
+                    <!--<form id="changepwdfrm" action="" method="post" onsubmit="return changepassword()">-->
+                        <table class="contact_table">
+                            <tr>
+                                <th>Current Password</th>
+                                <td width="100%">
+                                    <input type="password" id="current_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="Current Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>New Password</th>
+                                <td>
+                                    <input type="password" id="new_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="New Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Retype Passsword</th>
+                                <td>
+                                    <input type="password" id="retype_psw" pattern="[a-zA-Z0-9!@#$&()-`+]{5,15}"
+                                           placeholder="Retype New Password"
+                                           title="Must contain 5 to 15 characters, and no spaces" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="view_button" style="font-size: 15px;width: 100%;" onclick="changepassword()">Change Password
+                                    </button>
+                            </tr>
+                        </table>
+                    <!--</form>-->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Google map js -->
+<!--    <script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=goMap" type="text/javascript"></script>-->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ7Y8ZCWIYUk-Y9rPHvvqtCiTWt1TKBxY&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+<!-- Gmap Helper -->
+<script src="vendor/gmaps.min.js"></script>
+<!-- j Query -->
+<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
+
+<script>
+    var current_tab = document.querySelector('.inner_list');
+    var current_sub_tab = document.querySelector('.tab_button');
+    var current_design_tab = document.querySelector('.design_button');
+    var current_service_tab = document.querySelector('.service_button');
+    var current_settings_tab = document.querySelector('.settings_button');
+
+    function switchTo(view, elm) {
+        current_tab.classList.remove('active_icon');
+        document.getElementById(current_view).className = document.getElementById(current_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_view).className.replace("hidden", "show");
+        current_view = view;
+        current_tab = elm;
+        elm.classList.add('active_icon');
+    }
+
+    function switchTab(view, elm) {
+        current_sub_tab.classList.remove('active_sub_tab');
+        document.getElementById(current_sub_view).className = document.getElementById(current_sub_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_sub_view).className.replace("hidden", "show");
+        current_sub_view = view;
+        current_sub_tab = elm;
+        elm.classList.add('active_sub_tab');
+    }
+
+    function switchdesignTab(view, elm) {
+        current_design_tab.classList.remove('active_design_tab');
+        document.getElementById(current_design_view).className = document.getElementById(current_design_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_design_view).className.replace("hidden", "show");
+        current_design_view = view;
+        current_design_tab = elm;
+        elm.classList.add('active_design_tab');
+    }
+
+    function switchserviceTab(view, elm) {
+        current_service_tab.classList.remove('active_service_tab');
+        document.getElementById(current_service_view).className = document.getElementById(current_service_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_service_view).className.replace("hidden", "show");
+        current_service_view = view;
+        current_service_tab = elm;
+        elm.classList.add('active_service_tab');
+    }
+
+    function switchsettingsTab(view, elm) {
+        current_settings_tab.classList.remove('active_settings_tab');
+        document.getElementById(current_settings_view).className = document.getElementById(current_settings_view).className.replace("show", "hidden")
+        document.getElementById(view).className = document.getElementById(current_settings_view).className.replace("hidden", "show");
+        current_settings_view = view;
+        current_settings_tab = elm;
+        elm.classList.add('active_settings_tab');
+    }
+
+    function showDetails(id) {
+        var detail_id = 'detail_' + id;
+        var view_id = 'view_' + id;
+        var hide_id = 'hide_' + id;
+        document.getElementById(detail_id).className = document.getElementById(detail_id).className.replace("hidden", "show");
+        document.getElementById(hide_id).className = document.getElementById(hide_id).className.replace("hidden", "show");
+        document.getElementById(view_id).className = document.getElementById(view_id).className.replace("show", "hidden");
+    }
+
+    function showNext(view, elm) {
+        document.getElementById(view).className = document.getElementById(view).className.replace("hidden", "show");
+        document.getElementById(elm).className = document.getElementById(elm).className.replace("show", "hidden");
+
+    }
+
+    function showPrevious(view, elm) {
+        document.getElementById(view).className = document.getElementById(view).className.replace("hidden", "show");
+        document.getElementById(elm).className = document.getElementById(elm).className.replace("show", "hidden");
+
+    }
+
+    function hideDetails(id) {
+        var detail_id = 'detail_' + id;
+        var view_id = 'view_' + id;
+        var hide_id = 'hide_' + id;
+        document.getElementById(detail_id).className = document.getElementById(detail_id).className.replace("show", "hidden");
+        document.getElementById(hide_id).className = document.getElementById(hide_id).className.replace("show", "hidden");
+        document.getElementById(view_id).className = document.getElementById(view_id).className.replace("hidden", "show");
+    }
+
+    function cancelDetails(id) {
+        var a = confirm('Do you want to cancel this Print Job?')
+        if (a == true) {
+
+            qwest.post('/cancel_job', {
+                id: id
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 0 || json.success == 1) {
+                        alert('Print Job Cancelled')
+                        window.location = '/dashboard'
+                    }
+                    else {
+                        alert("Error: Cannot be Cancelled!");
+                    }
+                })
+
+            // //Enter Script for Cancelling Print Job
+            // alert('Print Job cancelled successfully')
+
+        }
+    }
+
+    function changeProfile() {
+
+        //File Upload
+        var fileName = document.getElementById('profile').value;
+        if (fileName == "") {
+            alert("Select a File!")
+            document.getElementById('profile').focus()
+            return false
+        }
+        var allowed_extensions = new Array("jpg", "png", "jpeg", "bmp");
+        var file_extension = fileName.split('.').pop().toLowerCase(); // split function will split the filename by dot(.), and pop function will pop the last element from the array which will give you the extension as well. If there will be no extension then it will return the filename.
+
+        for (var i = 0; i <= allowed_extensions.length; i++) {
+            if (allowed_extensions[i] == file_extension) {
+
+                //Enter Script for Updating Profile Picture in Database
+                // document.getElementById('profile_pic').setAttribute("src",fileName)
+                var file = document.getElementById('profile').files[0];
+
+                uploadFile(file, function (err, img_url) {
+
+                    console.log(img_url)
+                    if (err) {
+
+                        alert('Error uploading image!')
+
+                    } else {
+
+                        var pic = document.getElementsByClassName('avatar_pic')
+                            pic[0].src= pic[1].src = 'uploads/' + img_url
+
+                            qwest.post('/update_profile_pic' , {url:img_url})
+                                .then(function (xhr,json) {
+
+                               if( json.error == 0) {
+                                   alert('Profile Picture Changed Successfully')
+                               }
+
+                            })
+
+
+                    }
+                })
+
+
+
+            }
+        }
+
+        // alert("Invalid file format!")
+        // document.getElementById('profile').focus()
+        return false;
+
+    }
+
+
+
+
+
+    function changepassword() {
+
+        var current_psw = document.getElementById('current_psw').value;
+        var new_psw = document.getElementById('new_psw').value;
+        var retype_psw = document.getElementById('retype_psw').value;
+
+        if (new_psw != retype_psw) {
+            alert("Error: Passwords do not match!");
+            document.getElementById('retype_psw').focus();
+            return false
+        }
+        else {
+
+            qwest.post('/update_password', {
+
+                current_psw: current_psw,
+                new_psw: new_psw
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 1) {
+                        alert('Error: Current Password is Incorrect!')
+                    } else {
+                        alert('Password Changed Successfully');
+                        window.location = '/dashboard'
+                    }
+                })
+
+        }
+    }
+
+    function logout() {
+        var a = confirm('Do you want to logout?')
+        if (a == true) {
+
+            alert('Logged Out Successfully!')
+            window.location.href = '/logout'
+        }
+    }
+
+
+    var modal = document.getElementById('feedbackmodal');
+    document.getElementById('modalclose').addEventListener('click', function () {
+        modal.style.display = "none";
+    });
+
+    function feedback(id,psp_id) {
+
+        modal.dataset.id = id
+        modal.dataset.psp_id = psp_id
+        modal.style.display = 'block'
+
+    }
+
+    function ratejob() {
+
+        var feedback = document.getElementById('feedback').value;
+        if (feedback == "") {
+            alert('Enter Feedback!');
+            document.getElementById('feedback').focus();
+        }
+        else {
+
+            qwest.post('/give_feedback', {
+                id: modal.dataset.id,
+                psp_id : modal.dataset.psp_id,
+                rating : document.getElementsByName('rating')[0].value,
+                feedback : feedback
+
+            })
+                .then(function (xhr, json) {
+
+                    if (json.error == 0 || json.success == 1) {
+                        alert('Print Job Rated!')
+                        window.location = '/dashboard'
+                        modal.style.display = "none";
+
+                    }
+                    else {
+                        alert("Error: Feedback not Submitted!");
+                    }
+                })
+
+        }
+
+    }
+
+
+    var map;
+
+    var user_lat = <%= typeof lat != 'undefined' ? lat : '' %>;
+
+    var user_lng =<%= typeof lng != 'undefined' ? lng : '' %>;
+
+    function goMap() {
+        if ($('#map').length) {
+            // Styles a map in night mode.
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: user_lat,
+                    lng: user_lng
+                },
+                zoom: 11,
+                scrollwheel: false
+            });
+
+            // To add the marker to the map
+
+        }
+        ;
+    };
+    // Dom Ready Function
+    jQuery(document).on('ready', function () {
+        (function ($) {
+            // add your functions
+
+        })(jQuery);
+    });
+
+    var placeSearch, autocomplete, globalSpace;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */
+            (document.getElementById('city')), {
+                types: ['geocode']
+            });
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+
+
+        // Get the place details from the autocomplete object.
+
+        var place = autocomplete.getPlace();
+        globalSpace = place;
+        document.getElementsByName('shop_lon')[0].value = place.geometry.location.lng();
+        document.getElementsByName('shop_lat')[0].value = place.geometry.location.lat();
+        document.getElementById('location_label').innerHTML = place.geometry.location.lng() + ',' + place.geometry.location.lat()
+
+        console.log(place)
+        return;
+
+    }
+
+
+
+    var services = {};
+
+    function fetchServices() {
+
+        fetch('/user/list_services')
+            .then(data => data.json()
+    )
+    .
+        then(json => {
+
+            //                    services = json;
+
+            var services_html = '<option value="none"> Select Service </option>';
+
+        var temp_services = {}
+
+        for (var i = 0; i < json.length; i++) {
+
+            console.log(json[i].service_name)
+
+            if (typeof temp_services[json[i].service_name] != 'undefined') {
+
+
+                continue;
+            }
+
+            temp_services[json[i].service_name] = 1
+            services[json[i].service_name] = []
+
+            for (var j = 0; j < json.length; j++) {
+
+                if (json[i].service_name == json[j].service_name) {
+                    services[json[i].service_name].push(json[j])
+                }
+            }
+
+
+            services_html += "<option value=\"" + json[i].service_name + "\">" + json[i].service_name + "</option>"
+
+
+        }
+
+        document.getElementById('service').innerHTML = services_html
+
+    })
+
+    }
+
+    document.getElementById('service').addEventListener('click', function (e) {
+
+
+        console.log(e.target.value)
+
+        var sizes = services[e.target.value]
+
+        var size_html = '<option> Select Size</option>'
+
+
+        for (var j = 0; j < sizes.length; j++) {
+
+            size_html = "<option value=\"" + sizes[j].service_id + "\">" + sizes[j].document_size + "</option>"
+
+        }
+
+        document.getElementById('document_size').innerHTML = size_html
+
+    })
+
+    fetchServices()
+
+
+    active_services = []
+
+
+    function uploadFile(file, cb) {
+
+        var frm = new FormData();
+        frm.append("file", file);
+        qwest.post('user/upload', frm)
+            .then(function (xhr, json) {
+
+
+                if (json.error == 0) {
+
+
+                    if (cb) {
+                        cb(null, json.location)
+                    } else {
+
+                        if (cb) {
+                            cb(null);
+                        }
+                    }
+                }
+
+            });
+
+    }
+
+
+    function addJobAndPay() {
+
+
+        var data = {
+            job_details: active_services,
+            provider: active_psp
+        }
+
+        qwest.post('/user/add_job', data)
+            .then(function (xhr, json) {
+
+                if (json.error != 0) {
+
+                    alert('Error submiting job')
+                    return
+                }
+
+
+                var options = {
+                    "key": "rzp_test_PX8lUQLftdiT0N",
+                    "amount": active_psp.rate * 100,
+                    "name": active_psp.name,
+                    "description": active_psp.user_address,
+                    "image": "/uploads/" + active_psp.user_img,
+                    "handler": function (response) {
+
+
+                        qwest.post('/user/update_job_payment', {
+                            raz_payment_id: response.razorpay_payment_id,
+                            payment_id: json.payment_id
+                        })
+                            .then(function (xhr, json) {
+
+                                if (json.error == 1) {
+
+                                    alert('payment failed')
+
+                                }
+
+                                else {
+
+                                    window.location = './dashboard/success'
+                                }
+
+                            })
+
+                    },
+                    "prefill": {
+                        "name": "<%= typeof name != 'undefined' ? name : '' %>",
+                        "email": "<%= typeof email != 'undefined' ? email : '' %>",
+                        "contact": "<%= typeof phone != 'undefined' ? phone : '' %>"
+                    },
+                    "notes": {
+                        "address": active_psp.user_address,
+                        "payment_id": json.payment_id
+                    },
+                    "theme": {
+                        "color": "#C9182B"
+                    },
+                    "modal": {
+                        ondismiss: function () {
+
+                            alert('Payment not completed')
+
+                        }
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+
+
+            })
+
+    }
+
+
+    function parser(str, obj) {
+        for (key in obj) {
+            str = str.replace(new RegExp('%' + key + '%', 'g'), obj[key]);
+        }
+        return str;
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qwest/4.5.0/qwest.min.js"></script>
+
+<script>
+
+
+    (function() {
+        qwest.get('/jobs_services')
+            .then(function (xhr,json) {
+
+
+
+                var service_td = document.querySelectorAll('[data-service_id]')
+                for(var i=0, len = service_td.length; i < len; i++) {
+
+                    service_td[i].innerHTML = json[service_td[i].dataset.service_id].service_name
+                    service_td[i].nextElementSibling.innerHTML = json[service_td[i].dataset.service_id].document_size
+                }
+
+            })
+    })()
+
+
+</script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script type="text/javascript">window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "350ee67d-45b9-4b70-91dd-78ea4d5d1db5";
+    (function () {
+        d = document;
+        s = d.createElement("script");
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();</script>
+
+</body>
+
+</html>
